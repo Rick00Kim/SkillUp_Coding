@@ -4,31 +4,28 @@
 # 3. Print Result Arithmetic by x, y
 
 # Import Modules
-from Calculator.modules import BaseCalculator
+from modules import Calculator
 
 
 def print_arithmetic():
-    print("===================================")
-    print("Addition ->       [Sum,   + ,0]")
-    print("Subtraction ->    [Sub,   -, 1]")
-    print("Multiplication -> [Multi, *, 2]")
-    print("Division ->       [Div,   /, 3]")
-    print("===================================")
+    print("=============================")
+    print("Addition ->       [Sum, +, 1]")
+    print("Subtraction ->    [Sub, -, 2]")
+    print("Multiplication -> [Mul, *, 3]")
+    print("Division ->       [Div, /, 4]")
+    print("=============================")
 
 
 # Get User Input
-x = input("Input Compare Based Integer -> ")
+x = input("Input Compare Based Integer  -> ")
 y = input("Input Compare Target Integer -> ")
 
 # Print Available Arithmetic Functions
 print_arithmetic()
 
+func_input = input("Input Function name -> ")
 
-
-s = BaseCalculator(x, y, 's')
-
-print(type(s.base_integer))
-print(type(s.target_integer))
-print(type(s.arithmetic_char))
+s = Calculator(x, y, func_input)
 
 # Get User Function Character
+print(s.calculate())

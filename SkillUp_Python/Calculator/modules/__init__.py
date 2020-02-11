@@ -1,3 +1,1 @@
-from .calculator_base import BaseCalculator
-
-
+from .calculator_base import Calculator
