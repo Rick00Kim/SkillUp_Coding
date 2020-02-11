@@ -23,7 +23,12 @@ public class IndexController {
     @RequestMapping(value = SkillUpConstant.Url.ROOT + "/model")
     public List<SkillUpEntity> getModel() {
         List<SkillUpEntity> result = Lists.newArrayList();
-        IntStream.range(0, 15).forEach(i -> result.add(SkillUpEntity.builder().id((long) (i + 1)).quantity((i + 1) * 200).build()));
+        IntStream.range(0, 15).forEach(i ->
+                result.add(
+                        SkillUpEntity.builder()
+                                .id((long) (i + 1))
+                                .quantity((i + 1) * 200)
+                                .build()));
         return result;
     }
 
