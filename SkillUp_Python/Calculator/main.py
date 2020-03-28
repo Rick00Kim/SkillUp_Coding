@@ -16,16 +16,21 @@ def print_arithmetic():
     print("=============================")
 
 
-# Get User Input
-x = input("Input Compare Based Integer  -> ")
-y = input("Input Compare Target Integer -> ")
+def execute():
+    # Get User Input
+    x = input("Input Compare Based Integer  -> ")
+    y = input("Input Compare Target Integer -> ")
 
-# Print Available Arithmetic Functions
-print_arithmetic()
+    # Print Available Arithmetic Functions
+    print_arithmetic()
 
-func_input = input("Input Function name -> ")
+    func_input = input("Input Function name -> ")
 
-s = Calculator(x, y, func_input)
+    s = Calculator(x, y, func_input)
 
-# Get User Function Character
-print(s.calculate())
+    # Get User Function Character
+    print(s.calculate())
+
+
+if __name__ == "__main__":
+    execute()
