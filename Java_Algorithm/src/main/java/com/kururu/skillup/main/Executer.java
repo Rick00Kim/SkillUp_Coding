@@ -1,7 +1,7 @@
 package com.kururu.skillup.main;
 
 import com.kururu.skillup.algorithm.AlgorithmIF;
-import com.kururu.skillup.algorithm.problems.Algorithm4;
+import com.kururu.skillup.algorithm.problems.Algorithm7;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 public class Executer {
     public static void main(String[] args) {
         // Polymorphism Definition
-        AlgorithmIF algorithmProblem = new Algorithm4();
+        AlgorithmIF algorithmProblem = new Algorithm7();
         // Call Input
         algorithmProblem.input();
         // Call Process

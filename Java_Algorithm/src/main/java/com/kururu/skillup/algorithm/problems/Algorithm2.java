@@ -1,14 +1,11 @@
 package com.kururu.skillup.algorithm.problems;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.kururu.skillup.algorithm.AlgorithmIF;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.Pair;
 
-import java.util.List;
 import java.util.Set;
-import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
