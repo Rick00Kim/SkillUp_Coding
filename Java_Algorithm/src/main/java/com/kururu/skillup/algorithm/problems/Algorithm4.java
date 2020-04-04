@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * Problem URL : https://leetcode.com/problems/alphabet-board-path/description/
  *
- * @Author Rick00Kim dreamx119@gmail.com
+ * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
 public class Algorithm4 implements AlgorithmIF {

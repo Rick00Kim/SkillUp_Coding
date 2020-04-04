@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
  * 1 "[\"#####\",\"# # #\",\"### #\",\"#  ##\",\"#####\"]"
  * 2 "[\"######\",\"### #\",\"## ##\",\" #### \",\" #####\",\"### # \"]"
  *
- * @Author Rick00Kim dreamx119@gmail.com
+ * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
 public class Algorithm1 implements AlgorithmIF {

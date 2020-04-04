@@ -8,7 +8,7 @@ import java.util.Arrays;
 /**
  * Problem URL : https://app.codility.com/programmers/lessons/2-arrays/cyclic_rotation/
  *
- * @Author Rick00Kim dreamx119@gmail.com
+ * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
 public class Algorithm6 implements AlgorithmIF {
@@ -25,15 +25,15 @@ public class Algorithm6 implements AlgorithmIF {
     @Override
     public void process() {
 
-        if (!checkRange(inputArray.length, 0, 100)
-                || !checkRange(rotation, 0, 100)) {
+        if (checkRange(inputArray.length, 0, 100)
+                || checkRange(rotation, 0, 100)) {
             return;
         }
 
         for (int i = 0; i < rotation; i++) {
             for (int j = inputArray.length - 1; j > 0; j--) {
-                if (!checkRange(inputArray[j], -1000, 1000)
-                        || !checkRange(inputArray[j - 1], -1000, 1000)) {
+                if (checkRange(inputArray[j], -1000, 1000)
+                        || checkRange(inputArray[j - 1], -1000, 1000)) {
                     return;
                 }
                 int temp = inputArray[j - 1];
@@ -49,6 +49,6 @@ public class Algorithm6 implements AlgorithmIF {
     }
 
     private boolean checkRange(int target, int from, int to) {
-        return target >= from && target <= to;
+        return target < from || target > to;
     }
 }

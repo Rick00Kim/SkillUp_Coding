@@ -3,6 +3,11 @@ package com.kururu.skillup.algorithm.problems;
 import com.kururu.skillup.algorithm.AlgorithmIF;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Algorithm 5
+ *
+ * @author Rick00Kim dreamx119@gmail.com
+ */
 @Slf4j
 public class Algorithm5 implements AlgorithmIF {
 

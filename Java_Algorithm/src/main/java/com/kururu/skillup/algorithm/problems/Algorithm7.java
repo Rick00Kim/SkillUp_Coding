@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Problem URL : https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/
  *
- * @Author Rick00Kim dreamx119@gmail.com
+ * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
 public class Algorithm7 implements AlgorithmIF {
@@ -24,35 +24,24 @@ public class Algorithm7 implements AlgorithmIF {
     @Override
     public void process() {
 
-        if (!checkRange(inputArray.length, 1, 1000000)) {
+        if (checkRange(inputArray.length, 1, 1000000)) {
             return;
         }
 
-        Set<Integer> skipIndex = new HashSet<>();
+        Set<Integer> skipElements = new HashSet<>();
 
-        int result = 0;
-        for (int i = 0; i < inputArray.length - 1; i++) {
-            if (!checkRange(inputArray[i], 1, 1000000000)) {
+        for (int element : inputArray) {
+            if (checkRange(element, 1, 1000000000)) {
                 return;
             }
-            if (skipIndex.contains(i)) {
+            if (!skipElements.contains(element)) {
+                skipElements.add(element);
                 continue;
             }
-            for (int j = i + 1; j < inputArray.length; j++) {
-
-                if (!checkRange(inputArray[i], 1, 1000000000)) {
-                    return;
-                }
-
-                if (inputArray[i] == inputArray[j]) {
-                    skipIndex.add(j);
-                    break;
-                }
-
-            }
+            skipElements.remove(element);
         }
 
-        log.info(String.valueOf(result));
+        log.info(String.valueOf((int) skipElements.iterator().next()));
     }
 
     @Override
@@ -61,6 +50,6 @@ public class Algorithm7 implements AlgorithmIF {
     }
 
     private boolean checkRange(int target, int from, int to) {
-        return target >= from && target <= to;
+        return target < from || target > to;
     }
 }

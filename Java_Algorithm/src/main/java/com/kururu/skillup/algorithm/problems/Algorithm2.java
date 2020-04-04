@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  * <li>Write a function that returns the total score when an integer from 0 to 10 and a string consisting of letters S, D, T, *, and # is entered.</li>
  * </ol>
  *
- * @Author Rick00Kim dreamx119@gmail.com
+ * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
 public class Algorithm2 implements AlgorithmIF {

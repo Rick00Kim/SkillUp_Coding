@@ -18,6 +18,8 @@ import lombok.extern.slf4j.Slf4j;
  * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
  * Output: 7 -> 0 -> 8
  * Explanation: 342 + 465 = 807.
+ *
+ * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
 public class Algorithm3 implements AlgorithmIF {
