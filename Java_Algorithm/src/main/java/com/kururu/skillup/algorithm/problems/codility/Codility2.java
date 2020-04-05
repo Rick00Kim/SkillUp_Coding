@@ -1,4 +1,4 @@
-package com.kururu.skillup.algorithm.problems;
+package com.kururu.skillup.algorithm.problems.codility;
 
 import com.kururu.skillup.algorithm.AlgorithmIF;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,7 @@ import java.util.Arrays;
  * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
-public class Algorithm6 implements AlgorithmIF {
+public class Codility2 implements AlgorithmIF {
 
     private int[] inputArray = null;
     private int rotation;

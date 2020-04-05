@@ -1,4 +1,4 @@
-package com.kururu.skillup.algorithm.problems;
+package com.kururu.skillup.algorithm.problems.kakao;
 
 import com.google.common.collect.Sets;
 import com.kururu.skillup.algorithm.AlgorithmIF;
@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
  * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
-public class Algorithm2 implements AlgorithmIF {
+public class Kakao2 implements AlgorithmIF {
 
     private static final Set<Pair<Integer, String>> TEST_LIST_PAIR_INPUT = Sets.newHashSet(
             Pair.of(37, "1S2D*3T"),

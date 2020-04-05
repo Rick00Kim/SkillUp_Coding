@@ -1,4 +1,4 @@
-package com.kururu.skillup.algorithm.problems;
+package com.kururu.skillup.algorithm.problems.kakao;
 
 import com.kururu.skillup.algorithm.AlgorithmIF;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
-public class Algorithm1 implements AlgorithmIF {
+public class Kakao1 implements AlgorithmIF {
 
     /* INPUT */
     private static final int N = 5;

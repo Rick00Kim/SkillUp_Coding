@@ -1,4 +1,4 @@
-package com.kururu.skillup.algorithm.problems;
+package com.kururu.skillup.algorithm.problems.leetcode;
 
 import com.kururu.skillup.algorithm.AlgorithmIF;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
-public class Algorithm4 implements AlgorithmIF {
+public class LeetCode1 implements AlgorithmIF {
 
     private static final String TARGET = "leet";
     private static final String DESTINATION = "DDR!UURRR!!DDD!";
