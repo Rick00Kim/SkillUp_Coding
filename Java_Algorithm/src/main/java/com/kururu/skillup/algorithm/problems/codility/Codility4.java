@@ -1,7 +1,10 @@
 package com.kururu.skillup.algorithm.problems.codility;
 
-import com.kururu.skillup.algorithm.AlgorithmIF;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * https://app.codility.com/programmers/lessons/3-time_complexity/frog_jmp/
@@ -9,24 +12,28 @@ import lombok.extern.slf4j.Slf4j;
  * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
-public class Codility4 implements AlgorithmIF {
+public class Codility4 extends AbstractCodility {
 
-    private int x, y, d;
+    private final Map<String, Integer> inputMap = Collections.unmodifiableMap(new HashMap<String, Integer>() {
+        {
+            put("X", 10);
+            put("Y", 85);
+            put("D", 30);
+        }
+    });
 
-    @Override
-    public void input() {
-        x = 10;
-        y = 85;
-        d = 30;
-    }
+    private int result = 0;
 
     @Override
     public void process() {
+        int x = inputMap.get("X");
+        int y = inputMap.get("Y");
+        int d = inputMap.get("D");
+
         if ((x > y) ||
                 checkRange(new int[]{x, y, d}, 1000000000)) {
             return;
         }
-        int result = 0;
 
         if ((y - x) % d > 0) {
             result = ((y - x) / d) + 1;
@@ -34,12 +41,21 @@ public class Codility4 implements AlgorithmIF {
             result = ((y - x) / d);
         }
 
-        log.info(String.valueOf(result));
     }
 
     @Override
-    public void output() {
+    protected String getInputData() {
+        return inputMap.toString();
+    }
 
+    @Override
+    protected String getOutputData() {
+        return String.valueOf(result);
+    }
+
+    @Override
+    protected String getExpectedResult() {
+        return "3";
     }
 
     private boolean checkRange(int[] targets, int to) {

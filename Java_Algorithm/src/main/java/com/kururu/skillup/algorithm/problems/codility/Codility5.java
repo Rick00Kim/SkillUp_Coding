@@ -11,21 +11,15 @@ import java.util.Arrays;
  * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
-public class Codility5 implements AlgorithmIF {
+public class Codility5 extends AbstractCodility {
 
-    private int[] inputArray;
+    private int[] inputArray = new int[]{2, 3, 1, 5};
 
-    @Override
-    public void input() {
-        inputArray = new int[]{2, 3, 1, 5};
-    }
+    private Integer result = null;
 
     @Override
     public void process() {
-
         Arrays.sort(inputArray);
-
-        Integer result = null;
 
         for (int i = 0; i < inputArray.length; i++) {
             if (inputArray[i] != i + 1) {
@@ -33,15 +27,24 @@ public class Codility5 implements AlgorithmIF {
                 break;
             }
         }
+
         if (result == null) {
             result = inputArray.length + 1;
         }
-
-        log.info(String.valueOf(result));
     }
 
     @Override
-    public void output() {
+    protected String getInputData() {
+        return String.valueOf(inputArray);
+    }
 
+    @Override
+    protected String getOutputData() {
+        return String.valueOf(result);
+    }
+
+    @Override
+    protected String getExpectedResult() {
+        return "4";
     }
 }

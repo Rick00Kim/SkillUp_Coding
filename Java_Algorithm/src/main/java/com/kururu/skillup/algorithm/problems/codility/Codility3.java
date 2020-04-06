@@ -1,8 +1,8 @@
 package com.kururu.skillup.algorithm.problems.codility;
 
-import com.kururu.skillup.algorithm.AlgorithmIF;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,14 +12,11 @@ import java.util.Set;
  * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
-public class Codility3 implements AlgorithmIF {
+public class Codility3 extends AbstractCodility {
 
-    private int[] inputArray = null;
+    private int[] inputArray = new int[]{9, 3, 9, 3, 9, 7, 9};
 
-    @Override
-    public void input() {
-        inputArray = new int[]{9, 3, 9, 3, 9, 7, 9};
-    }
+    private int result;
 
     @Override
     public void process() {
@@ -41,12 +38,23 @@ public class Codility3 implements AlgorithmIF {
             skipElements.remove(element);
         }
 
-        log.info(String.valueOf((int) skipElements.iterator().next()));
+        result = skipElements.iterator().next();
+
     }
 
     @Override
-    public void output() {
+    protected String getInputData() {
+        return Arrays.toString(inputArray);
+    }
 
+    @Override
+    protected String getOutputData() {
+        return String.valueOf(result);
+    }
+
+    @Override
+    protected String getExpectedResult() {
+        return "7";
     }
 
     private boolean checkRange(int target, int from, int to) {
