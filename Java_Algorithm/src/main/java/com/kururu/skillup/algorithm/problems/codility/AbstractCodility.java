@@ -4,6 +4,11 @@ import com.kururu.skillup.algorithm.AlgorithmIF;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
 
+/**
+ * Abstract Class for Codility Algorithm Problems
+ *
+ * @author Rick00Kim dreamx119@gmail.com
+ */
 @Slf4j
 public abstract class AbstractCodility implements AlgorithmIF {
 

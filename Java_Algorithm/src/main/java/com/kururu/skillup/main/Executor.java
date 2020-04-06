@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author Rick00Kim dreamx119@gmail.com
  */
 @Slf4j
-public class Executer {
+public class Executor {
     public static void main(String[] args) {
         // Polymorphism Definition
         AlgorithmIF algorithmProblem = new Codility12();
