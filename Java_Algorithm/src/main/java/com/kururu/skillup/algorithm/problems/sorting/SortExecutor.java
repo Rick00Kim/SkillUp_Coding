@@ -22,7 +22,7 @@ public class SortExecutor {
     public static void main(String[] args) {
 
         // Define
-        AbstractSorting sorting = new SelectionSorting(targetArray);
+        AbstractSorting sorting = new QuickSorting(targetArray, false);
         // Input
         sorting.input();
         // Process

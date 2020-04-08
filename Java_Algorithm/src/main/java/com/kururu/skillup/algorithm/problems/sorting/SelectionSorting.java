@@ -7,8 +7,8 @@ package com.kururu.skillup.algorithm.problems.sorting;
  */
 public class SelectionSorting extends AbstractSorting {
 
-    public SelectionSorting(int[] targetArray) {
-        super(targetArray);
+    public SelectionSorting(int[] targetArray, boolean reverseFlg) {
+        super(targetArray, reverseFlg);
     }
 
     @Override
@@ -16,10 +16,18 @@ public class SelectionSorting extends AbstractSorting {
 
         for (int i = 0; i < targetArray.length - 1; i++) {
             for (int j = i + 1; j < targetArray.length; j++) {
-                if (targetArray[i] > targetArray[j]) {
-                    int temp = targetArray[j];
-                    targetArray[j] = targetArray[i];
-                    targetArray[i] = temp;
+                if (reverseFlg) {
+                    if (targetArray[i] < targetArray[j]) {
+                        int temp = targetArray[j];
+                        targetArray[j] = targetArray[i];
+                        targetArray[i] = temp;
+                    }
+                } else {
+                    if (targetArray[i] > targetArray[j]) {
+                        int temp = targetArray[j];
+                        targetArray[j] = targetArray[i];
+                        targetArray[i] = temp;
+                    }
                 }
             }
         }

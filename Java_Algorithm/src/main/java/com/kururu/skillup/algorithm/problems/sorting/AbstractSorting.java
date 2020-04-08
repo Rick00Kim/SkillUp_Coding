@@ -2,6 +2,7 @@ package com.kururu.skillup.algorithm.problems.sorting;
 
 import com.kururu.skillup.algorithm.AlgorithmIF;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.Validate;
 
 /**
  * <h2>Abstract Class Sorting Algorithm</h2>
@@ -16,23 +17,67 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class AbstractSorting implements AlgorithmIF {
 
+    private static final String EXECUTE_RESULT_MESSAGE = "%s`s Result : %s";
+    private static final String VALIDATE_MESSAGE = "Sort is not correct(Before : %d, After : %d, ReverseFlg : %s)";
+
     protected int[] targetArray;
+
+    protected boolean reverseFlg;
 
     private long startTime;
 
-    public AbstractSorting(int[] targetArray) {
+    private long secDiffTime;
+
+    /**
+     * Constructor
+     *
+     * @param targetArray
+     * @param reverseFlg
+     */
+    public AbstractSorting(int[] targetArray, boolean reverseFlg) {
         this.targetArray = targetArray;
+        this.reverseFlg = reverseFlg;
     }
 
     @Override
     public void input() {
+        log.info(getSortName() + " is Started, ReverseFlg : " + reverseFlg);
         startTime = System.currentTimeMillis();
     }
 
     @Override
     public void output() {
-        long secDiffTime = (System.currentTimeMillis() - startTime);
-        log.info(getSortName() + "'s Executing time : " + secDiffTime);
+        secDiffTime = (System.currentTimeMillis() - startTime);
+        log.info("Executing time : " + secDiffTime);
+        log.info(getSortName() + " is Finished");
+
+        try {
+            postSortedArrayCheck();
+        } catch (final IllegalArgumentException e) {
+            log.error(String.format(EXECUTE_RESULT_MESSAGE, getSortName(), RESULT.FAILURE), e);
+            return;
+        }
+
+        log.info(String.format(EXECUTE_RESULT_MESSAGE, getSortName(), RESULT.SUCCESS));
+
+    }
+
+    /**
+     * Check Sorted(It Have to execute after executing process)
+     */
+    private void postSortedArrayCheck() {
+        for (int i = 0; i < targetArray.length - 1; i++) {
+            if (reverseFlg) {
+                Validate.isTrue(targetArray[i] >= targetArray[i + 1], String.format(VALIDATE_MESSAGE, targetArray[i], targetArray[i + 1], true));
+            } else {
+                Validate.isTrue(targetArray[i] <= targetArray[i + 1], String.format(VALIDATE_MESSAGE, targetArray[i], targetArray[i + 1], false));
+            }
+        }
+
+    }
+
+    public long getSecDiffTime() {
+        return secDiffTime;
     }
 
     protected abstract String getSortName();

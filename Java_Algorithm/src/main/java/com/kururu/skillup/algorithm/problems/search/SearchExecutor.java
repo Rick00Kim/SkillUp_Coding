@@ -4,7 +4,7 @@ import org.apache.commons.lang3.RandomUtils;
 
 public class SearchExecutor {
 
-    private static final Integer MAX_INDEX = 50000;
+    private static final Integer MAX_INDEX = 300000;
     private static int[] targetArray;
 
     static {
@@ -15,6 +15,9 @@ public class SearchExecutor {
     }
 
     public static void main(String[] args) {
-
+        AbstractSearch search = new BinarySearch();
+        search.input(targetArray, targetArray[RandomUtils.nextInt(0, MAX_INDEX)]);
+        search.process();
+        search.output();
     }
 }
