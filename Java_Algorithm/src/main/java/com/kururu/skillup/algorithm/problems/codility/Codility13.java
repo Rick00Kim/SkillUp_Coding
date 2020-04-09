@@ -1,25 +1,16 @@
 package com.kururu.skillup.algorithm.problems.codility;
 
+/**
+ * https://app.codility.com/programmers/lessons/11-sieve_of_eratosthenes/count_semiprimes/
+ *
+ * <li>Test Result : </li>
+ *
+ * @author Rick00Kim dreamx119@gmail.com
+ */
 public class Codility13 extends AbstractCodility {
-
-    private int[] inputArray = new int[]{1, 0, 2, 0, 0, 2};
 
     @Override
     public void process() {
-
-        int binarian = 0;
-        for (int element : inputArray) {
-            binarian += Math.pow(2, element);
-        }
-        System.out.println(binarian);
-
-        int result = 0;
-        for (char chk : Integer.toBinaryString(binarian).toCharArray()) {
-            if (chk == '1') {
-                result++;
-            }
-        }
-        System.out.println(result);
 
     }
 
