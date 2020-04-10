@@ -1,8 +1,5 @@
 package com.kururu.skillup.algorithm.problems.codility;
 
-import com.kururu.skillup.algorithm.AlgorithmIF;
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -13,7 +10,6 @@ import java.util.Map;
  *
  * @author Rick00Kim dreamx119@gmail.com
  */
-@Slf4j
 public class Codility6 extends AbstractCodility {
 
     private final Map<String, Object> inputMap = Collections.unmodifiableMap(new HashMap<String, Object>() {

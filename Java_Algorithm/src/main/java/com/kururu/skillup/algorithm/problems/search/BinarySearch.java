@@ -11,8 +11,8 @@ public class BinarySearch extends AbstractSearch {
 
     @Override
     public void input(int[] targetArray, int searchTarget) {
-        super.input(targetArray, searchTarget);
         Arrays.sort(targetArray);
+        super.input(targetArray, searchTarget);
     }
 
     @Override

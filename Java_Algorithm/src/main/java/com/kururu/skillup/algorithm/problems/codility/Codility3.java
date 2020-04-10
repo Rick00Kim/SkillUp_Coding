@@ -1,7 +1,5 @@
 package com.kururu.skillup.algorithm.problems.codility;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,7 +9,6 @@ import java.util.Set;
  *
  * @author Rick00Kim dreamx119@gmail.com
  */
-@Slf4j
 public class Codility3 extends AbstractCodility {
 
     private int[] inputArray = new int[]{9, 3, 9, 3, 9, 7, 9};

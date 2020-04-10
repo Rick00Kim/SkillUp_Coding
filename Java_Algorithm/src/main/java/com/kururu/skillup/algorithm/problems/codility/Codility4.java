@@ -1,7 +1,5 @@
 package com.kururu.skillup.algorithm.problems.codility;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +9,6 @@ import java.util.Map;
  *
  * @author Rick00Kim dreamx119@gmail.com
  */
-@Slf4j
 public class Codility4 extends AbstractCodility {
 
     private final Map<String, Integer> inputMap = Collections.unmodifiableMap(new HashMap<String, Integer>() {

@@ -1,8 +1,5 @@
 package com.kururu.skillup.algorithm.problems.codility;
 
-import com.kururu.skillup.algorithm.AlgorithmIF;
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.Arrays;
 
 /**
@@ -10,7 +7,6 @@ import java.util.Arrays;
  *
  * @author Rick00Kim dreamx119@gmail.com
  */
-@Slf4j
 public class Codility5 extends AbstractCodility {
 
     private int[] inputArray = new int[]{2, 3, 1, 5};
@@ -35,7 +31,7 @@ public class Codility5 extends AbstractCodility {
 
     @Override
     protected String getInputData() {
-        return String.valueOf(inputArray);
+        return Arrays.toString(inputArray);
     }
 
     @Override

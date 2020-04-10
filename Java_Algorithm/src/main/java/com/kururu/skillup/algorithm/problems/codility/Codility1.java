@@ -1,13 +1,10 @@
 package com.kururu.skillup.algorithm.problems.codility;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * https://app.codility.com/programmers/lessons/1-iterations/binary_gap/
  *
  * @author Rick00Kim dreamx119@gmail.com
  */
-@Slf4j
 public class Codility1 extends AbstractCodility {
 
     private int inputInteger = 1041;
@@ -19,11 +16,9 @@ public class Codility1 extends AbstractCodility {
 
         final String binary = Integer.toBinaryString(inputInteger);
 
-        final char[] charArray = binary.toCharArray();
-
         int gap = 0;
 
-        for (char element : charArray) {
+        for (char element : binary.toCharArray()) {
             if (element == '0') {
                 ++gap;
             } else {
