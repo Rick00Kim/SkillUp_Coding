@@ -1,4 +1,8 @@
 class FunctionBase:
+    """
+    Function Base
+    """
+
     def __init__(self, category, sub_menu):
         self.category = category
         self.sub_menu = sub_menu

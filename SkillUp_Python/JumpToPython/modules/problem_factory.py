@@ -3,6 +3,10 @@ from .function import FunctionExpression, FunctionSimpleStatements, FunctionComp
 
 
 class ProblemFactory:
+    """
+    Problem Factory
+    """
+
     def __init__(self, category, sub_menu):
         self.category = category
         self.sub_menu = sub_menu
@@ -37,38 +41,31 @@ class ProblemFactory:
             elif eq(self.sub_menu, "Dictionary1"):
                 target_class.dictionary_1()
                 return
-            elif eq(self.sub_menu, "Dictionary2"):
-                target_class.dictionary_2()
-                return
             elif eq(self.sub_menu, "ListDuplicate"):
                 target_class.list_duplicate()
                 return
             else:
-                raise Exception('UnExpected menu')
+                raise Exception('UnExpected menu, Category : {}, SubMenu : {}'.format(self.category, self.sub_menu))
 
         elif eq(self.category, "Simple statements"):
             target_class = FunctionSimpleStatements(self.category, self.sub_menu)
-            if eq(self.sub_menu, ""):
-                target_class.average_score()
+            if eq(self.sub_menu, "Multiples"):
+                target_class.multiples()
                 return
-            elif eq(self.sub_menu, ""):
-                target_class.odd_number()
+            elif eq(self.sub_menu, "Stars 1"):
+                target_class.star_1()
                 return
-            elif eq(self.sub_menu, ""):
-                target_class.personal_id_1()
+            elif eq(self.sub_menu, "for 1"):
+                target_class.for_1()
                 return
-
-        elif eq(self.category, "Compound statements"):
-            target_class = FunctionCompoundStatements(self.category, self.sub_menu)
-            if eq(self.sub_menu, ""):
-                target_class.average_score()
+            elif eq(self.sub_menu, "Average"):
+                target_class.average()
                 return
-            elif eq(self.sub_menu, ""):
-                target_class.odd_number()
+            elif eq(self.sub_menu, "List Comprehension"):
+                target_class.list_comprehension()
                 return
-            elif eq(self.sub_menu, ""):
-                target_class.personal_id_1()
-                return
+            else:
+                raise Exception('UnExpected menu, Category : {}, SubMenu : {}'.format(self.category, self.sub_menu))
 
         else:
             raise Exception('Unexpected Category')
