@@ -61,9 +61,6 @@ class ProblemFactory:
             elif eq(self.sub_menu, "Average"):
                 target_class.average()
                 return
-            elif eq(self.sub_menu, "List Comprehension"):
-                target_class.list_comprehension()
-                return
             else:
                 raise Exception('UnExpected menu, Category : {}, SubMenu : {}'.format(self.category, self.sub_menu))
 
