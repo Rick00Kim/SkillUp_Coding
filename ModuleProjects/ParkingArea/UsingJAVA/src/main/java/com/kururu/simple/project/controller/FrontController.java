@@ -1,5 +1,10 @@
 package com.kururu.simple.project.controller;
 
+import com.kururu.simple.project.function.FunctionIF;
+import org.springframework.util.ObjectUtils;
+
+import java.io.BufferedReader;
+
 /**
  * <h2>Parking Area [Front controller]</h2>
  * <ol>
@@ -14,7 +19,13 @@ public class FrontController {
     /**
      * Request for processing
      */
-    public void processRequest() {
-
+    public void processRequest(
+            final FunctionIF functionIF,
+            final BufferedReader bufferedReader
+    ) {
+        if (ObjectUtils.isEmpty(functionIF)) {
+            return;
+        }
+        functionIF.execute(bufferedReader);
     }
 }

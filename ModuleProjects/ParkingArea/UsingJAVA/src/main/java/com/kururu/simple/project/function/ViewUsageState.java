@@ -1,0 +1,17 @@
+package com.kururu.simple.project.function;
+
+import java.io.BufferedReader;
+
+/**
+ * <h2>Parking Area [View usage state]</h2>
+ *
+ * @author Rick00Kim dreamx119@gmail.com
+ */
+public class ViewUsageState implements FunctionIF {
+
+    @Override
+    public void execute(final BufferedReader bufferedReader) {
+
+    }
+
+}
