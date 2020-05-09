@@ -65,7 +65,7 @@ public class Executor implements CommandLineRunner {
                     log.info("Exit Program....");
                     isStop = true;
                     break;
-                case "100":
+                case "menu":
                     showAllMenu();
                     break;
                 default:
@@ -79,6 +79,9 @@ public class Executor implements CommandLineRunner {
 
     }
 
+    /**
+     * Output All Function
+     */
     private void showAllMenu() {
         final StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("\n=======================");
@@ -88,6 +91,12 @@ public class Executor implements CommandLineRunner {
 
     }
 
+    /**
+     * Choose function Character
+     *
+     * @param userInput Parameter from User input
+     * @return Function identifier (Not null)
+     */
     private String selectFunction(
             final String userInput
     ) {

@@ -26,6 +26,7 @@ public class ParkingAreaConstants {
             put("4", "IncomeCreate");
             put("5", "EndBusiness");
             put("6", "ExitProgram");
+            put("100", "Menu");
         }
     });
 
