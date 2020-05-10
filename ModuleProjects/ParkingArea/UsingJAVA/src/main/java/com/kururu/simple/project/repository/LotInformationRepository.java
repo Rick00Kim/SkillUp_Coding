@@ -14,4 +14,5 @@ import java.util.List;
 public interface LotInformationRepository extends JpaRepository<LotInformation, Long> {
 
     List<LotInformation> findByLotName(@Param("LOT_NAME") final String lotName);
+    
 }

@@ -1,14 +1,13 @@
 package com.kururu.simple.project;
 
+import com.kururu.simple.project.execute.Executor;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-@RunWith(SpringRunner.class)
-@Transactional
-@Rollback
+@RunWith(SpringJUnit4ClassRunner.class)
+@ComponentScan(basePackages = "com.kururu.simple.project",
+        excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = Executor.class))
 public class AbstractTest {
 }

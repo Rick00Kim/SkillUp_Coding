@@ -1,13 +1,12 @@
 package com.kururu.simple.project.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import static com.kururu.simple.project.constant.ParkingAreaEnums.END_BUSINESS_FLG;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.*;
+
+import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 /**
@@ -16,22 +15,19 @@ import java.sql.Timestamp;
  *
  * @author Rick00Kim dreamx119@gmail.com
  */
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
-public class EntryBookEntity {
+@Entity(name = "ENTRY_BOOK")
+public class EntryBook {
 
-    /* Vehicle number */
-    @Id
-    private String vehicleNumber;
-
-    /* Client number */
-    @Column
-    private String clientNumber;
+    @EmbeddedId
+    private EntryBookIdentity key;
 
     /* Arrival time */
+    @NotNull
     @Column
     private Timestamp arrivalTime;
 
@@ -40,15 +36,17 @@ public class EntryBookEntity {
     private Timestamp departureTime;
 
     /* Hours of use */
+    @Max(99)
     @Column
     private Integer hoursOfUse;
 
     /* Cost of use */
+    @Max(999999999)
     @Column
     private Integer costOfUse;
 
-    /* End business flag */
-    @Column
-    private String endBusinessFlg;
+    /* End business flag (Using Converter) */
+    @Convert(converter = END_BUSINESS_FLG.Convert.class)
+    private END_BUSINESS_FLG endBusinessFlg;
 
 }

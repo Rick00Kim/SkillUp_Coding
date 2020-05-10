@@ -1,16 +1,22 @@
 package com.kururu.simple.project.function;
 
-import java.io.BufferedReader;
+import org.springframework.stereotype.Component;
 
 /**
  * <h2>Parking Area [Exit car from parking area]</h2>
  *
  * @author Rick00Kim dreamx119@gmail.com
  */
-public class ExitingCar implements FunctionIF {
+@Component
+public class ExitingCar extends AbstractFunction {
 
     @Override
-    public void execute(final BufferedReader bufferedReader) {
+    protected void inputAndValidate() {
+
+    }
+
+    @Override
+    public void process() {
 
     }
 

@@ -6,6 +6,8 @@ logging:
           project: DEBUG
     org:
       springframework: DEBUG
+      boot:
+        autoconfigure: INFO
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -18,5 +20,12 @@ spring:
     generate-ddl: false
     open-in-view: false
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        check_nullability: true
+    hibernate:
+      use-new-id-generator-mappings: false
+
   main:
     web-application-type: NONE

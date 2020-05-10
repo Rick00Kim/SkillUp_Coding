@@ -1,18 +1,17 @@
 package com.kururu.simple.project.entity;
 
-import com.kururu.simple.project.constant.ParkingAreaEnums;
+import static com.kururu.simple.project.constant.ParkingAreaEnums.DEL_FLG;
+
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * <h2>Parking Area [Entity of LOT_INFORMATION]</h2>
  * <p>Area information by Parking lot</p>
  *
- * @author Rick00Kim d
- * @Getter
- * @Setter
- * @Entity(name = "LOT_INFORMATION")reamx119@gmail.com
+ * @author Rick00Kim dreamx119@gmail.com
  */
 @Builder
 @AllArgsConstructor
@@ -28,22 +27,23 @@ public class LotInformation {
     private Long lotNumber;
 
     /* Lot name */
-    @Column
+    @Column(nullable = false)
     private String lotName;
 
     /* Acceptable small car */
-    @Column
+    @Column(nullable = false)
     private Integer acceptableSmall;
 
     /* Acceptable medium car */
-    @Column
+    @Column(nullable = false)
     private Integer acceptableMedium;
 
     /* Acceptable heavy car */
-    @Column
+    @Column(nullable = false)
     private Integer acceptableHeavy;
 
     /* Delete flag (Using Converter) */
-    @Convert(converter = ParkingAreaEnums.DEL_FLG.Convert.class)
-    private ParkingAreaEnums.DEL_FLG delFlg;
+    @NotNull
+    @Convert(converter = DEL_FLG.Convert.class)
+    private DEL_FLG delFlg;
 }

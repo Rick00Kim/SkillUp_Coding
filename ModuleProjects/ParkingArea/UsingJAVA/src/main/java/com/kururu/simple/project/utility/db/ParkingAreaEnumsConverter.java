@@ -1,6 +1,6 @@
 package com.kururu.simple.project.utility.db;
 
-import com.kururu.simple.project.constant.ParkingAreaEnumInterface;
+import com.kururu.simple.project.utility.common.ParkingAreaEnumInterface;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.AttributeConverter;

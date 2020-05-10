@@ -16,17 +16,16 @@ public class ParkingAreaConstants {
     /**
      * Function Map
      */
-    public static final Map<String, String> ALL_FUNCTION_MAP = Collections.unmodifiableMap(new HashMap<String, String>() {
+    public static final Map<Integer, Pair<String, String>> ALL_FUNCTION_MAP = Collections.unmodifiableMap(new HashMap<Integer, Pair<String, String>>() {
         private static final long serialVersionUID = 1L;
 
         {
-            put("1", "ParkCar");
-            put("2", "ExitCar");
-            put("3", "ViewUsage");
-            put("4", "IncomeCreate");
-            put("5", "EndBusiness");
-            put("6", "ExitProgram");
-            put("100", "Menu");
+            put(1, Pair.of("1", "ParkCar"));
+            put(2, Pair.of("2", "ExitCar"));
+            put(3, Pair.of("3", "ViewUsage"));
+            put(4, Pair.of("4", "IncomeCreate"));
+            put(5, Pair.of("5", "EndBusiness"));
+            put(6, Pair.of("6", "ExitProgram"));
         }
     });
 

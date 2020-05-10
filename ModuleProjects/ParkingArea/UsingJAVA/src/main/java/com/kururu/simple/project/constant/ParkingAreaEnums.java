@@ -1,5 +1,6 @@
 package com.kururu.simple.project.constant;
 
+import com.kururu.simple.project.utility.common.ParkingAreaEnumInterface;
 import com.kururu.simple.project.utility.db.ParkingAreaEnumsConverter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,4 +30,24 @@ public class ParkingAreaEnums {
             }
         }
     }
+
+    /**
+     * End business Flag
+     */
+    @AllArgsConstructor
+    @Getter
+    public enum END_BUSINESS_FLG implements ParkingAreaEnumInterface<String> {
+        BUSINESS_NOT_ENDED("0", "Not ended business"),
+        BUSINESS_ENDED("1", "Ended business");
+
+        private final String code;
+        private final String description;
+
+        public static class Convert extends ParkingAreaEnumsConverter<END_BUSINESS_FLG, String> {
+            public Convert() {
+                super(END_BUSINESS_FLG.class);
+            }
+        }
+    }
+
 }
