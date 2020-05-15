@@ -25,6 +25,8 @@ spring:
         format_sql: true
         check_nullability: true
     hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false
 
   main:

@@ -11,13 +11,20 @@ import org.springframework.stereotype.Component;
 public class ExitingCar extends AbstractFunction {
 
     @Override
-    protected void inputAndValidate() {
+    protected RESULT_STATUS input() {
 
+        return RESULT_STATUS.SUCCESS;
     }
 
     @Override
-    public void process() {
+    protected RESULT_STATUS validate() {
+        return null;
+    }
 
+    @Override
+    public RESULT_STATUS process() {
+
+        return RESULT_STATUS.SUCCESS;
     }
 
 }

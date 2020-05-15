@@ -2,6 +2,7 @@ package com.kururu.simple.project.entity;
 
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -18,11 +19,13 @@ public class EntryBookIdentity implements Serializable {
     /* Vehicle number */
     @NotNull
     @Max(20)
+    @Column(name = "VEHICLE_NUMBER")
     private String vehicleNumber;
 
     /* Client number */
     @NotNull
     @Max(20)
+    @Column(name = "CLIENT_NUMBER")
     private String clientNumber;
 
     @Override

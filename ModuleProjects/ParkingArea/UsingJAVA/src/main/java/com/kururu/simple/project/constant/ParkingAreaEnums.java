@@ -5,6 +5,8 @@ import com.kururu.simple.project.utility.db.ParkingAreaEnumsConverter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.stream.Stream;
+
 /**
  * <h2>Parking Area [Enums]</h2>
  *
@@ -50,4 +52,30 @@ public class ParkingAreaEnums {
         }
     }
 
+    /**
+     * End business Flag
+     */
+    @AllArgsConstructor
+    @Getter
+    public enum CAR_SIZE implements ParkingAreaEnumInterface<String> {
+        SMALL("0", "Small size car"),
+        MEDIUM("1", "Medium size car"),
+        HEAVY("2", "Heavy size car");
+
+        private final String code;
+        private final String description;
+
+        public static class Convert extends ParkingAreaEnumsConverter<CAR_SIZE, String> {
+            public Convert() {
+                super(CAR_SIZE.class);
+            }
+        }
+
+        public static CAR_SIZE getValue(final String code) {
+            return Stream.of(CAR_SIZE.values())
+                    .filter(e -> code.equals(e.getCode()))
+                    .findFirst()
+                    .orElse(null);
+        }
+    }
 }
