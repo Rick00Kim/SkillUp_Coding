@@ -18,7 +18,8 @@ public class EndOfBusiness extends AbstractFunction {
 
     @Override
     protected RESULT_STATUS validate() {
-        return null;
+
+        return RESULT_STATUS.SUCCESS;
     }
 
     @Override

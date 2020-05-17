@@ -15,6 +15,20 @@ import java.util.stream.Stream;
 public class ParkingAreaEnums {
 
     /**
+     * Menu show flag
+     */
+    @AllArgsConstructor
+    @Getter
+    public enum MENU_SHOW_FLG implements ParkingAreaEnumInterface<String> {
+        BASICALLY_SHOW("0", "Show menu basically"),
+        NECESSARY_CURRENT_LOT("1", "Show when Existing current lot");
+
+        private final String code;
+        private final String description;
+
+    }
+
+    /**
      * Delete Flag
      */
     @AllArgsConstructor
@@ -22,8 +36,8 @@ public class ParkingAreaEnums {
     public enum DEL_FLG implements ParkingAreaEnumInterface<String> {
         NOT_DELETED("0", "Not Deleted"),
         DELETED("1", "Deleted");
-
         private final String code;
+
         private final String description;
 
         public static class Convert extends ParkingAreaEnumsConverter<DEL_FLG, String> {
@@ -31,6 +45,7 @@ public class ParkingAreaEnums {
                 super(DEL_FLG.class);
             }
         }
+
     }
 
     /**
@@ -41,8 +56,8 @@ public class ParkingAreaEnums {
     public enum END_BUSINESS_FLG implements ParkingAreaEnumInterface<String> {
         BUSINESS_NOT_ENDED("0", "Not ended business"),
         BUSINESS_ENDED("1", "Ended business");
-
         private final String code;
+
         private final String description;
 
         public static class Convert extends ParkingAreaEnumsConverter<END_BUSINESS_FLG, String> {
@@ -50,10 +65,11 @@ public class ParkingAreaEnums {
                 super(END_BUSINESS_FLG.class);
             }
         }
+
     }
 
     /**
-     * End business Flag
+     * Car Size
      */
     @AllArgsConstructor
     @Getter
@@ -61,14 +77,15 @@ public class ParkingAreaEnums {
         SMALL("0", "Small size car"),
         MEDIUM("1", "Medium size car"),
         HEAVY("2", "Heavy size car");
-
         private final String code;
+
         private final String description;
 
         public static class Convert extends ParkingAreaEnumsConverter<CAR_SIZE, String> {
             public Convert() {
                 super(CAR_SIZE.class);
             }
+
         }
 
         public static CAR_SIZE getValue(final String code) {
@@ -77,5 +94,6 @@ public class ParkingAreaEnums {
                     .findFirst()
                     .orElse(null);
         }
+
     }
 }

@@ -1,15 +1,16 @@
 package com.kururu.simple.project.controller;
 
+import static com.kururu.simple.project.constant.ParkingAreaConstants.ALL_FUNCTION_MAP;
+
+import com.kururu.simple.project.constant.ParkingAreaEnums.MENU_SHOW_FLG;
 import com.kururu.simple.project.function.*;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Triple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
 import java.util.Map;
-
-import static com.kururu.simple.project.constant.ParkingAreaConstants.ALL_FUNCTION_MAP;
 
 /**
  * <h2>Parking Area [Function controller]</h2>
@@ -71,8 +72,11 @@ public class FunctionController {
                 log.info("Exit Program....");
                 result = true;
                 break;
+            case 11:
+                log.info("Not supported yet...");
+                break;
             default:
-                log.info("Incorrect input...");
+                log.warn("Incorrect input...");
                 break;
         }
         return result;
@@ -90,9 +94,9 @@ public class FunctionController {
         if (ObjectUtils.isEmpty(userInput)) {
             return 0;
         }
-        for (Map.Entry<Integer, Pair<String, String>> mapEntry : ALL_FUNCTION_MAP.entrySet()) {
-            if (mapEntry.getValue().getLeft().toLowerCase().equals(userInput.toLowerCase())
-                    || mapEntry.getValue().getRight().toLowerCase().equals(userInput.toLowerCase())) {
+        for (final Map.Entry<Integer, Triple<String, String, MENU_SHOW_FLG>> mapEntry : ALL_FUNCTION_MAP.entrySet()) {
+            if (mapEntry.getValue().getLeft().equalsIgnoreCase(userInput)
+                    || mapEntry.getValue().getMiddle().equalsIgnoreCase(userInput)) {
                 return mapEntry.getKey();
             }
         }

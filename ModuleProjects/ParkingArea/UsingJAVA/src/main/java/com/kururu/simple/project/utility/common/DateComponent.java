@@ -8,6 +8,11 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * <h2>Parking Area [Component about Date]</h2>
+ *
+ * @author Rick00Kim dreamx119@gmail.com
+ */
 @Component
 public class DateComponent {
 

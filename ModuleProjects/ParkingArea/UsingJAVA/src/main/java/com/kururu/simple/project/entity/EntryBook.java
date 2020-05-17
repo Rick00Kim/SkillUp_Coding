@@ -28,11 +28,6 @@ public class EntryBook implements Serializable {
     @EmbeddedId
     private EntryBookIdentity key;
 
-    /* Lot Number */
-    @NotNull
-    @Column(name = "LOT_NUMBER")
-    private Long lotNumber;
-
     /* Car size */
     @NotNull
     @Column(name = "CAR_SIZE")

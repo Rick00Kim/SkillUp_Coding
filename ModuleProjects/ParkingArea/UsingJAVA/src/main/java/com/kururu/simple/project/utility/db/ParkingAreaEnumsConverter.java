@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Convert;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 /**
  * <h2>Parking Area [Enums Converter for Table column]</h2>
@@ -25,8 +26,8 @@ public abstract class ParkingAreaEnumsConverter<T extends Enum<T> & ParkingAreaE
 
     @Override
     public T convertToEntityAttribute(E dbData) {
-        return Arrays.stream(enumClass.getEnumConstants())
-                .filter(e -> e.getCode() == dbData)
+        return Stream.of(enumClass.getEnumConstants())
+                .filter(e -> e.getCode().equals(dbData))
                 .findFirst()
                 .orElse(null);
     }

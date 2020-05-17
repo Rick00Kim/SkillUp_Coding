@@ -1,16 +1,27 @@
 package com.kururu.simple.project.function;
 
 import com.google.common.collect.Maps;
+import com.kururu.simple.project.entity.LotInformation;
+import com.kururu.simple.project.utility.factory.CurrentDataFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
 
 import java.util.Map;
 
+/**
+ * <h2>Parking Area [Abstract for Function]</h2>
+ *
+ * @author Rick00Kim dreamx119@gmail.com
+ */
 public abstract class AbstractFunction implements FunctionIF {
-
-    /* Key for input method */
-    protected static final String KEY_INPUT = "keyInput";
 
     /* Map in Function */
     protected static Map<String, Object> functionMap = Maps.newHashMap();
+
+    @Autowired
+    private CurrentDataFactory currentDataFactory;
+
+    protected LotInformation currentLotInformation;
 
     protected enum RESULT_STATUS {
         SUCCESS, FAILURE
@@ -18,6 +29,12 @@ public abstract class AbstractFunction implements FunctionIF {
 
     @Override
     public void execute() {
+
+        /* Check Current Lot information */
+        this.currentLotInformation = currentDataFactory.getCurrentLotInformation();
+        if (ObjectUtils.isEmpty(currentLotInformation)) {
+            return;
+        }
         /* Call input Method */
         if (RESULT_STATUS.SUCCESS != input()) {
             return;

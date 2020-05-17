@@ -1,8 +1,13 @@
 package com.kururu.simple.project.dto;
 
-import com.kururu.simple.project.constant.ParkingAreaEnums;
+import com.kururu.simple.project.constant.ParkingAreaEnums.CAR_SIZE;
 import lombok.*;
 
+/**
+ * <h2>Parking Area [DTO for Parking car function]</h2>
+ *
+ * @author Rick00Kim dreamx119@gmail.com
+ */
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,9 +15,9 @@ import lombok.*;
 @Setter
 public class ParkingCarDto {
 
-    private String inputLotName;
-
+    /* Vehicle Number */
     private String vehicleNumber;
 
-    private ParkingAreaEnums.CAR_SIZE inputCarSize;
+    /* Car Size from Input */
+    private CAR_SIZE inputCarSize;
 }

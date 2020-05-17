@@ -28,11 +28,17 @@ public class EntryBookIdentity implements Serializable {
     @Column(name = "CLIENT_NUMBER")
     private String clientNumber;
 
+    /* Lot Number */
+    @NotNull
+    @Column(name = "LOT_NUMBER")
+    private Long lotNumber;
+
     @Override
     public int hashCode() {
 
         int result = vehicleNumber.hashCode();
         result = 31 * result + clientNumber.hashCode();
+        result = 31 * result + lotNumber.hashCode();
         return result;
     }
 
@@ -47,6 +53,8 @@ public class EntryBookIdentity implements Serializable {
 
         if (!vehicleNumber.equals(that.vehicleNumber))
             return false;
-        return clientNumber.equals(that.clientNumber);
+        if (!clientNumber.equals(that.clientNumber))
+            return false;
+        return lotNumber.equals(that.lotNumber);
     }
 }

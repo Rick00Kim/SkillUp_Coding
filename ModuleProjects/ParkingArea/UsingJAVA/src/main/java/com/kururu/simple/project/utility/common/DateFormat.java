@@ -3,6 +3,11 @@ package com.kururu.simple.project.utility.common;
 
 import java.text.SimpleDateFormat;
 
+/**
+ * <h2>Parking Area [Date Formatters]</h2>
+ *
+ * @author Rick00Kim dreamx119@gmail.com
+ */
 public class DateFormat {
 
     /**

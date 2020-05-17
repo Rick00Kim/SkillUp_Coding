@@ -29,19 +29,19 @@ public class LotInformation implements Serializable {
     private Long lotNumber;
 
     /* Lot name */
-    @Column(name = "LOT_NAME",nullable = false)
+    @Column(name = "LOT_NAME", unique = true, nullable = false)
     private String lotName;
 
     /* Acceptable small car */
-    @Column(name = "ACCEPTABLE_SMALL",nullable = false)
+    @Column(name = "ACCEPTABLE_SMALL", nullable = false)
     private Integer acceptableSmall;
 
     /* Acceptable medium car */
-    @Column(name = "ACCEPTABLE_MEDIUM",nullable = false)
+    @Column(name = "ACCEPTABLE_MEDIUM", nullable = false)
     private Integer acceptableMedium;
 
     /* Acceptable heavy car */
-    @Column(name = "ACCEPTABLE_HEAVY",nullable = false)
+    @Column(name = "ACCEPTABLE_HEAVY", nullable = false)
     private Integer acceptableHeavy;
 
     /* Delete flag (Using Converter) */
