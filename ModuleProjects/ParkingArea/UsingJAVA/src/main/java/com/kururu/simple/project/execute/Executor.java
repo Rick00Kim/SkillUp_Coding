@@ -1,12 +1,12 @@
 package com.kururu.simple.project.execute;
 
 import static com.kururu.simple.project.constant.ParkingAreaConstants.ALL_FUNCTION_MAP;
-import static com.kururu.simple.project.utility.common.CommonElements.USER_INPUT_READER;
 
 import com.google.common.collect.Sets;
 import com.kururu.simple.project.constant.ParkingAreaEnums.MENU_SHOW_FLG;
 import com.kururu.simple.project.controller.FunctionController;
-import com.kururu.simple.project.utility.factory.CurrentDataFactory;
+import com.kururu.simple.project.utility.components.UserInputComponent;
+import com.kururu.simple.project.utility.factory.CurrentLotInformationFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -30,7 +30,10 @@ public class Executor implements CommandLineRunner {
     private FunctionController functionController;
 
     @Autowired
-    private CurrentDataFactory currentDataFactory;
+    private CurrentLotInformationFactory currentLotInformationFactory;
+
+    @Autowired
+    private UserInputComponent userInputComponent;
 
     /**
      * Implements Method
@@ -44,8 +47,8 @@ public class Executor implements CommandLineRunner {
         boolean isStop;
         do {
             showAllMenu();
-            log.info("\nINPUT -> ");
-            isStop = functionController.forwardFunction(USER_INPUT_READER.readLine());
+            isStop = functionController.forwardFunction(
+                    userInputComponent.getUserInput("INPUT -> "));
         } while (!isStop);
 
     }
@@ -56,7 +59,7 @@ public class Executor implements CommandLineRunner {
     private void showAllMenu() {
 
         final Set<MENU_SHOW_FLG> setShowMenuTarget = Sets.newHashSet(MENU_SHOW_FLG.BASICALLY_SHOW);
-        if (currentDataFactory.isExistCurrentLotInformation()) {
+        if (currentLotInformationFactory.isExistCurrentLotInformation()) {
             setShowMenuTarget.add(MENU_SHOW_FLG.NECESSARY_CURRENT_LOT);
         }
 

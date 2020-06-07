@@ -16,6 +16,11 @@ public class DateFormat {
     public static final SimpleDateFormat FORMAT_YYYYMMDD = new SimpleDateFormat("yyyyMMdd");
 
     /**
+     * Date Format : yyyyMMddHHmmss
+     */
+    public static final SimpleDateFormat FORMAT_YYYYMMDDHHMMSS = new SimpleDateFormat("yyyyMMddHHmmss");
+
+    /**
      * Date Format : yyyy/MM/dd
      */
     public static final SimpleDateFormat FORMAT_YYYYMMDD_WITH_SLASH = new SimpleDateFormat("yyyy/MM/dd");

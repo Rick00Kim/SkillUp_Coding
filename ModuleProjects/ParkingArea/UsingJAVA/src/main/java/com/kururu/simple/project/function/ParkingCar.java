@@ -1,7 +1,6 @@
 package com.kururu.simple.project.function;
 
 import static com.kururu.simple.project.constant.ParkingAreaConstants.WARN_MESSAGE_INPUT_ERROR;
-import static com.kururu.simple.project.utility.common.CommonElements.USER_INPUT_READER;
 
 import com.kururu.simple.project.constant.ParkingAreaEnums.END_BUSINESS_FLG;
 import com.kururu.simple.project.constant.ParkingAreaEnums.CAR_SIZE;
@@ -39,11 +38,12 @@ public class ParkingCar extends AbstractFunction {
 
         final ParkingCarDto parkingCarDto = ParkingCarDto.builder().build();
         try {
-            log.info("\nVehicle number : ");
-            parkingCarDto.setVehicleNumber(USER_INPUT_READER.readLine());
-            log.info("\nCar size : ");
+            parkingCarDto.setVehicleNumber(
+                    userInputComponent.getUserInput("Vehicle number : "));
             parkingCarDto.setInputCarSize(
-                    Objects.requireNonNull(CAR_SIZE.getValue(USER_INPUT_READER.readLine()),
+                    Objects.requireNonNull(
+                            CAR_SIZE.getValue(
+                                    userInputComponent.getUserInput("Car size : ")),
                             String.format(WARN_MESSAGE_INPUT_ERROR, "CAR_SIZE")));
         } catch (Exception e) {
             log.warn(String.format(WARN_MESSAGE_INPUT_ERROR, "INPUT"), e);

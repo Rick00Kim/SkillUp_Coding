@@ -36,6 +36,7 @@ public class ParkingAreaEnums {
     public enum DEL_FLG implements ParkingAreaEnumInterface<String> {
         NOT_DELETED("0", "Not Deleted"),
         DELETED("1", "Deleted");
+
         private final String code;
 
         private final String description;
@@ -56,6 +57,7 @@ public class ParkingAreaEnums {
     public enum END_BUSINESS_FLG implements ParkingAreaEnumInterface<String> {
         BUSINESS_NOT_ENDED("0", "Not ended business"),
         BUSINESS_ENDED("1", "Ended business");
+
         private final String code;
 
         private final String description;
@@ -77,6 +79,7 @@ public class ParkingAreaEnums {
         SMALL("0", "Small size car"),
         MEDIUM("1", "Medium size car"),
         HEAVY("2", "Heavy size car");
+
         private final String code;
 
         private final String description;
@@ -90,6 +93,28 @@ public class ParkingAreaEnums {
 
         public static CAR_SIZE getValue(final String code) {
             return Stream.of(CAR_SIZE.values())
+                    .filter(e -> code.equals(e.getCode()))
+                    .findFirst()
+                    .orElse(null);
+        }
+
+    }
+
+    /**
+     * Income information kinds
+     */
+    @AllArgsConstructor
+    @Getter
+    public enum KINDS_INCOME_INFORMATION implements ParkingAreaEnumInterface<String> {
+        FOR_DAY("1", "For day"),
+        CUSTOM("2", "Custom day");
+
+        private final String code;
+
+        private final String description;
+
+        public static KINDS_INCOME_INFORMATION getValue(final String code) {
+            return Stream.of(KINDS_INCOME_INFORMATION.values())
                     .filter(e -> code.equals(e.getCode()))
                     .findFirst()
                     .orElse(null);

@@ -2,7 +2,8 @@ package com.kururu.simple.project.function;
 
 import com.google.common.collect.Maps;
 import com.kururu.simple.project.entity.LotInformation;
-import com.kururu.simple.project.utility.factory.CurrentDataFactory;
+import com.kururu.simple.project.utility.components.UserInputComponent;
+import com.kururu.simple.project.utility.factory.CurrentLotInformationFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 
@@ -19,7 +20,10 @@ public abstract class AbstractFunction implements FunctionIF {
     protected static Map<String, Object> functionMap = Maps.newHashMap();
 
     @Autowired
-    private CurrentDataFactory currentDataFactory;
+    private CurrentLotInformationFactory currentLotInformationFactory;
+
+    @Autowired
+    protected UserInputComponent userInputComponent;
 
     protected LotInformation currentLotInformation;
 
@@ -31,7 +35,7 @@ public abstract class AbstractFunction implements FunctionIF {
     public void execute() {
 
         /* Check Current Lot information */
-        this.currentLotInformation = currentDataFactory.getCurrentLotInformation();
+        this.currentLotInformation = currentLotInformationFactory.getCurrentLotInformation();
         if (ObjectUtils.isEmpty(currentLotInformation)) {
             return;
         }

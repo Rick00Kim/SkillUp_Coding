@@ -1,19 +1,17 @@
 package com.kururu.simple.project.utility.factory;
 
 import static com.kururu.simple.project.constant.ParkingAreaConstants.WARN_MESSAGE_NOT_NULL;
-import static com.kururu.simple.project.utility.common.CommonElements.USER_INPUT_READER;
 
 import com.kururu.simple.project.entity.LotInformation;
 import com.kururu.simple.project.repository.LotInformationRepository;
+import com.kururu.simple.project.utility.components.UserInputComponent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
-import java.io.IOException;
-
 /**
- * <h2>Parking Area [Current Data Factory]</h2>
+ * <h2>Parking Area [Current Lot Information Factory]</h2>
  * <ol>
  *     <li>Lot Information</li>
  * </ol>
@@ -22,10 +20,13 @@ import java.io.IOException;
  */
 @Component
 @Slf4j
-public class CurrentDataFactory {
+public class CurrentLotInformationFactory {
 
     @Autowired
     private LotInformationRepository lotInformationRepository;
+
+    @Autowired
+    private UserInputComponent userInputComponent;
 
     private LotInformation currentLotInformation = null;
 
@@ -44,21 +45,16 @@ public class CurrentDataFactory {
      * @return Managed Lot Information
      */
     public LotInformation getCurrentLotInformation() {
-        if (ObjectUtils.isEmpty(currentLotInformation))
-            try {
-                log.info("\nWhat is your Lot Name : ");
-                final LotInformation inputLotInformation = lotInformationRepository.findByLotName(USER_INPUT_READER.readLine());
-                if (ObjectUtils.isEmpty(inputLotInformation)) {
-                    log.warn(String.format(WARN_MESSAGE_NOT_NULL, "LOT_INFORMATION"));
-                }
-                currentLotInformation = inputLotInformation;
-            } catch (IOException e) {
-                log.warn("Failed when getting Lot Information", e);
-            }
         if (isExistCurrentLotInformation()) {
             log.info(String.format("CURRENT Lot Information -> [%s]", currentLotInformation.getLotName()));
         } else {
             log.info("Not set Lot Information");
+            final LotInformation inputLotInformation = lotInformationRepository.findByLotName(
+                    userInputComponent.getUserInput("What is your Lot Name : "));
+            if (ObjectUtils.isEmpty(inputLotInformation)) {
+                log.warn(String.format(WARN_MESSAGE_NOT_NULL, "LOT_INFORMATION"));
+            }
+            currentLotInformation = inputLotInformation;
         }
 
         return currentLotInformation;

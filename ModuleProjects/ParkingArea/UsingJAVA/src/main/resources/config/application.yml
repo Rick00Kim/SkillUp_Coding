@@ -31,3 +31,8 @@ spring:
 
   main:
     web-application-type: NONE
+kururu:
+  file:
+    base-dir: /kururuProjects/ParkingArea/file/output
+    daily-dir: ${kururu.file.base-dir}/daily
+    custom-dir: ${kururu.file.base-dir}/custom

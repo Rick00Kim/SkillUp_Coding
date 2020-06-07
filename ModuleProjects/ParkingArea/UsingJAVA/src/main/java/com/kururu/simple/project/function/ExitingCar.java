@@ -1,7 +1,7 @@
 package com.kururu.simple.project.function;
 
 import static com.kururu.simple.project.constant.ParkingAreaConstants.WARN_MESSAGE_INPUT_ERROR;
-import static com.kururu.simple.project.utility.common.CommonElements.USER_INPUT_READER;
+import static com.kururu.simple.project.constant.ParkingAreaEnums.END_BUSINESS_FLG;
 
 import com.kururu.simple.project.dto.ExitingCarDto;
 import com.kururu.simple.project.entity.EntryBook;
@@ -39,10 +39,10 @@ public class ExitingCar extends AbstractFunction {
 
         final ExitingCarDto exitingCarDto = ExitingCarDto.builder().build();
         try {
-            log.info("\nVehicle number : ");
-            exitingCarDto.setVehicleNumber(USER_INPUT_READER.readLine());
-            log.info("\nClient number : ");
-            exitingCarDto.setClientNumber(USER_INPUT_READER.readLine());
+            exitingCarDto.setVehicleNumber(
+                    userInputComponent.getUserInput("Vehicle number : "));
+            exitingCarDto.setClientNumber(
+                    userInputComponent.getUserInput("Client number : "));
             functionMap.put(TARGET_EXITING_CAR_DTO, exitingCarDto);
         } catch (Exception e) {
             log.warn(String.format(WARN_MESSAGE_INPUT_ERROR, "INPUT"), e);
@@ -71,9 +71,15 @@ public class ExitingCar extends AbstractFunction {
     @Override
     public RESULT_STATUS process() {
         final EntryBook targetEntryBook = (EntryBook) functionMap.get(TARGET_ENTRY_BOOK);
-        targetEntryBook.setDepartureTime(dateComponent.getCurrentTimestamp());
+        modifyEntryBook(targetEntryBook);
         entryBookRepository.save(targetEntryBook);
         return RESULT_STATUS.SUCCESS;
     }
 
+    private void modifyEntryBook(EntryBook entryBook) {
+        entryBook.setDepartureTime(dateComponent.getCurrentTimestamp());
+        long hours = (entryBook.getDepartureTime().getTime() - entryBook.getArrivalTime().getTime()) / 3600;
+        entryBook.setHoursOfUse((int) hours);
+        entryBook.setCostOfUse(entryBook.getHoursOfUse() * 1000);
+    }
 }
