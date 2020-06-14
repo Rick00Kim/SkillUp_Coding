@@ -2,17 +2,13 @@ package com.kururu.simple.project.function;
 
 import static com.kururu.simple.project.constant.ParkingAreaEnums.KINDS_INCOME_INFORMATION;
 
-import com.kururu.simple.project.constant.KururuFileProperties;
 import com.kururu.simple.project.dto.CreateIncomeDto;
 import com.kururu.simple.project.service.IncomeService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
-import javax.annotation.Resource;
 import java.util.Objects;
 
 /**

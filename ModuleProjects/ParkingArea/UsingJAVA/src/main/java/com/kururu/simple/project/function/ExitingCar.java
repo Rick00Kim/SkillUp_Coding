@@ -1,7 +1,6 @@
 package com.kururu.simple.project.function;
 
 import static com.kururu.simple.project.constant.ParkingAreaConstants.WARN_MESSAGE_INPUT_ERROR;
-import static com.kururu.simple.project.constant.ParkingAreaEnums.END_BUSINESS_FLG;
 
 import com.kururu.simple.project.dto.ExitingCarDto;
 import com.kururu.simple.project.entity.EntryBook;
@@ -39,10 +38,8 @@ public class ExitingCar extends AbstractFunction {
 
         final ExitingCarDto exitingCarDto = ExitingCarDto.builder().build();
         try {
-            exitingCarDto.setVehicleNumber(
-                    userInputComponent.getUserInput("Vehicle number : "));
-            exitingCarDto.setClientNumber(
-                    userInputComponent.getUserInput("Client number : "));
+            exitingCarDto.setVehicleNumber(userInputComponent.getUserInput("Vehicle number : "));
+            exitingCarDto.setClientNumber(userInputComponent.getUserInput("Client number : "));
             functionMap.put(TARGET_EXITING_CAR_DTO, exitingCarDto);
         } catch (Exception e) {
             log.warn(String.format(WARN_MESSAGE_INPUT_ERROR, "INPUT"), e);
@@ -54,14 +51,14 @@ public class ExitingCar extends AbstractFunction {
     @Override
     protected RESULT_STATUS validate() {
         final ExitingCarDto targetExitingCarDto = (ExitingCarDto) functionMap.get(TARGET_EXITING_CAR_DTO);
-        final EntryBook targetEntryBook = entryBookRepository.findById(EntryBookIdentity.builder()
-                .vehicleNumber(targetExitingCarDto.getVehicleNumber())
-                .clientNumber(targetExitingCarDto.getClientNumber())
-                .lotNumber(currentLotInformation.getLotNumber())
-                .build())
+        final EntryBook targetEntryBook = entryBookRepository
+                .findById(EntryBookIdentity.builder().vehicleNumber(targetExitingCarDto.getVehicleNumber())
+                        .clientNumber(targetExitingCarDto.getClientNumber())
+                        .lotNumber(currentLotInformation.getLotNumber()).build())
                 .orElse(null);
         if (ObjectUtils.isEmpty(targetEntryBook)) {
-            log.warn(String.format(NOT_EXIST_ENTRY_BOOK, targetExitingCarDto.getVehicleNumber(), targetExitingCarDto.getClientNumber()));
+            log.warn(String.format(NOT_EXIST_ENTRY_BOOK, targetExitingCarDto.getVehicleNumber(),
+                    targetExitingCarDto.getClientNumber()));
             return RESULT_STATUS.FAILURE;
         }
         functionMap.put(TARGET_ENTRY_BOOK, targetEntryBook);
@@ -78,8 +75,9 @@ public class ExitingCar extends AbstractFunction {
 
     private void modifyEntryBook(EntryBook entryBook) {
         entryBook.setDepartureTime(dateComponent.getCurrentTimestamp());
-        long hours = (entryBook.getDepartureTime().getTime() - entryBook.getArrivalTime().getTime()) / 3600;
+        long hours = (entryBook.getDepartureTime().getTime() - entryBook.getArrivalTime().getTime()) / 3600000;
         entryBook.setHoursOfUse((int) hours);
-        entryBook.setCostOfUse(entryBook.getHoursOfUse() * 1000);
+        entryBook.setCostOfUse((entryBook.getHoursOfUse() * 1000) == 0 ?
+                1000 : entryBook.getHoursOfUse() * 1000);
     }
 }

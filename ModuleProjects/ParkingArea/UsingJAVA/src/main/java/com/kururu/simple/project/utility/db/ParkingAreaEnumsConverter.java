@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Convert;
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 /**

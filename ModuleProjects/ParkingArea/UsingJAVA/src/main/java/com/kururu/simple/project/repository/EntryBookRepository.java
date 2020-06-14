@@ -28,7 +28,8 @@ public interface EntryBookRepository extends JpaRepository<EntryBook, EntryBookI
 
     @Query("SELECT A FROM ENTRY_BOOK A " +
             "WHERE A.key.lotNumber = :#{#condition.lotNumber} " +
-            "AND A.arrivalTime BETWEEN :#{#condition.pairTermADay.left} AND :#{#condition.pairTermADay.right} ")
+            "AND A.arrivalTime BETWEEN :#{#condition.pairTermADay.left} AND :#{#condition.pairTermADay.right} " +
+            "AND A.endBusinessFlg = '0'")
     List<EntryBook> selectEntryBookForIncomeFile(@Param("condition") IncomeFileCondition condition);
 
 }

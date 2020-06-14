@@ -13,7 +13,9 @@ import java.sql.Timestamp;
 
 /**
  * <h2>Parking Area [Entity of ENTRY_BOOK]</h2>
- * <p>Entry book of parking lot</p>
+ * <p>
+ * Entry book of parking lot
+ * </p>
  *
  * @author Rick00Kim dreamx119@gmail.com
  */
@@ -24,6 +26,8 @@ import java.sql.Timestamp;
 @Setter
 @Entity(name = "ENTRY_BOOK")
 public class EntryBook implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @EmbeddedId
     private EntryBookIdentity key;

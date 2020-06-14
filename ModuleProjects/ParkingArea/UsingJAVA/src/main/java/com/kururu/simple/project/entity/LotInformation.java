@@ -10,7 +10,9 @@ import java.io.Serializable;
 
 /**
  * <h2>Parking Area [Entity of LOT_INFORMATION]</h2>
- * <p>Area information by Parking lot</p>
+ * <p>
+ * Area information by Parking lot
+ * </p>
  *
  * @author Rick00Kim dreamx119@gmail.com
  */
@@ -21,6 +23,8 @@ import java.io.Serializable;
 @Setter
 @Entity(name = "LOT_INFORMATION")
 public class LotInformation implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     /* Lot number(Sequence) */
     @Id

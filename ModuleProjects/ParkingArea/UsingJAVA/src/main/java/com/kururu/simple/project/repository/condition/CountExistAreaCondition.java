@@ -12,7 +12,7 @@ import java.sql.Timestamp;
  * <h2>Parking Area [JPA condition Object]</h2>
  *
  * <ol>
- *     <li>{@link com.kururu.simple.project.repository.EntryBookRepository#countExistEmptyArea(CountExistAreaCondition)}</li>
+ * <li>{@link com.kururu.simple.project.repository.EntryBookRepository#countExistEmptyArea(CountExistAreaCondition)}</li>
  * </ol>
  *
  * @author Rick00Kim dreamx119@gmail.com
@@ -23,6 +23,8 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 public class CountExistAreaCondition implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     /* Lot Number */
     private Long lotNumber;

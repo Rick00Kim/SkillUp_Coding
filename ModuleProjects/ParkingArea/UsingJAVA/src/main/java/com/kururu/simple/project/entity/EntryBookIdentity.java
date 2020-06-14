@@ -16,6 +16,8 @@ import java.io.Serializable;
 @Embeddable
 public class EntryBookIdentity implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     /* Vehicle number */
     @NotNull
     @Max(20)
