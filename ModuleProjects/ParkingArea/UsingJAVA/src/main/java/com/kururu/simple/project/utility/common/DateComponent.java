@@ -28,6 +28,11 @@ public class DateComponent {
         return new Date();
     }
 
+    /**
+     * Get DateTerm a day (Current Date Range)
+     *
+     * @return Range pair
+     */
     public Pair<Timestamp, Timestamp> getDateTermADay() {
         final Date currentDate = getCurrentDate();
         final Timestamp beforeDate = new Timestamp(DateUtils.truncate(getCurrentDate(), Calendar.DAY_OF_MONTH).getTime());
@@ -37,6 +42,13 @@ public class DateComponent {
         return Pair.of(beforeDate, new Timestamp(afterDate.getTime()));
     }
 
+    /**
+     * Get DateTerm a day (Specific Date Range)
+     *
+     * @param customDatePair Specific Date String Range
+     * @return Range pair
+     * @throws ParseException Parse exception
+     */
     public Pair<Timestamp, Timestamp> getDateTermADay(Pair<String, String> customDatePair) throws ParseException {
 
         final Timestamp beforeDate = new Timestamp(DateFormat.FORMAT_YYYYMMDD.parse(customDatePair.getLeft().length() == 8

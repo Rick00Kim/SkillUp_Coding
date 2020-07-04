@@ -3,7 +3,7 @@ package com.kururu.simple.project.repository;
 import com.kururu.simple.project.repository.condition.CountExistAreaCondition;
 import com.kururu.simple.project.entity.EntryBook;
 import com.kururu.simple.project.entity.EntryBookIdentity;
-import com.kururu.simple.project.repository.condition.IncomeFileCondition;
+import com.kururu.simple.project.repository.condition.BusinessStatusCondition;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -29,7 +29,7 @@ public interface EntryBookRepository extends JpaRepository<EntryBook, EntryBookI
     @Query("SELECT A FROM ENTRY_BOOK A " +
             "WHERE A.key.lotNumber = :#{#condition.lotNumber} " +
             "AND A.arrivalTime BETWEEN :#{#condition.pairTermADay.left} AND :#{#condition.pairTermADay.right} " +
-            "AND A.endBusinessFlg = '0'")
-    List<EntryBook> selectEntryBookForIncomeFile(@Param("condition") IncomeFileCondition condition);
+            "AND A.endBusinessFlg IN :#{#condition.endBusinessFlgList}")
+    List<EntryBook> selectEntryBookAboutBusiness(@Param("condition") BusinessStatusCondition condition);
 
 }

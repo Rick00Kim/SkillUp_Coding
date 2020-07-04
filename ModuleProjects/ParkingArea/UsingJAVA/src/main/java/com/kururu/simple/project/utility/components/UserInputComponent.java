@@ -47,7 +47,7 @@ public class UserInputComponent {
      * @param outputEnum Target Enum array for output
      * @return User Input
      */
-    public <T extends Enum<T> & ParkingAreaEnumInterface> String getUserInput(Class<T> outputEnum) {
+    public <T extends Enum<T> & ParkingAreaEnumInterface<E>, E> String getUserInput(Class<T> outputEnum) {
         try {
             StringBuffer sb = new StringBuffer();
             sb.append("\n");

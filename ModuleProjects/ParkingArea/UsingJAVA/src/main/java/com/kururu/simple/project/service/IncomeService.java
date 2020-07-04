@@ -3,11 +3,12 @@ package com.kururu.simple.project.service;
 import static com.kururu.simple.project.constant.ParkingAreaEnums.KINDS_INCOME_INFORMATION;
 import static com.kururu.simple.project.constant.ParkingAreaEnums.END_BUSINESS_FLG;
 
+import com.google.common.collect.Lists;
 import com.kururu.simple.project.constant.KururuFileProperties;
 import com.kururu.simple.project.dto.CreateIncomeDto;
 import com.kururu.simple.project.entity.EntryBook;
 import com.kururu.simple.project.repository.EntryBookRepository;
-import com.kururu.simple.project.repository.condition.IncomeFileCondition;
+import com.kururu.simple.project.repository.condition.BusinessStatusCondition;
 import com.kururu.simple.project.utility.common.DateComponent;
 import com.kururu.simple.project.utility.common.DateFormat;
 import lombok.extern.slf4j.Slf4j;
@@ -24,11 +25,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * <h2>Parking Area [Income Service]</h2>
+ *
+ * @author Rick00Kim dreamx119@gmail.com
+ */
 @Service
 @Slf4j
 public class IncomeService {
@@ -76,18 +81,32 @@ public class IncomeService {
         return false;
     }
 
+    /**
+     * Create Income Information
+     *
+     * @param createIncomeDto IncomeDto
+     * @throws Exception All Exception
+     */
     public void createIncomeInformation(CreateIncomeDto createIncomeDto) throws Exception {
         checkDirectories();
         final Path targetPath = getTargetPath(createIncomeDto);
 
         try {
-            List<EntryBook> outputList = entryBookRepository.selectEntryBookForIncomeFile(createIncomeFileCondition(createIncomeDto));
+            List<EntryBook> outputList = entryBookRepository.selectEntryBookAboutBusiness(createIncomeFileCondition(createIncomeDto));
             try (CSVPrinter csvPrinter = new CSVPrinter(new FileWriter(targetPath.toFile()),
                     CSVFormat.DEFAULT.withSkipHeaderRecord())) {
                 for (EntryBook entryBook : outputList) {
-                    csvPrinter.printRecord(createIncomeDto.getLotInformation().getLotNumber(), createIncomeDto.getLotInformation().getLotName()
-                            , entryBook.getKey().getVehicleNumber(), entryBook.getKey().getClientNumber(), entryBook.getCarSize(),
-                            entryBook.getArrivalTime(), entryBook.getDepartureTime(), entryBook.getHoursOfUse(), entryBook.getCostOfUse());
+                    csvPrinter.printRecord(
+                            createIncomeDto.getLotInformation().getLotNumber(),
+                            createIncomeDto.getLotInformation().getLotName(),
+                            entryBook.getKey().getVehicleNumber(),
+                            entryBook.getKey().getClientNumber(),
+                            entryBook.getCarSize(),
+                            entryBook.getArrivalTime(),
+                            entryBook.getDepartureTime(),
+                            entryBook.getHoursOfUse(),
+                            entryBook.getCostOfUse()
+                    );
                     entryBook.setEndBusinessFlg(END_BUSINESS_FLG.BUSINESS_ENDED);
                     entryBookRepository.save(entryBook);
                 }
@@ -143,14 +162,22 @@ public class IncomeService {
         }
     }
 
-    private IncomeFileCondition createIncomeFileCondition(CreateIncomeDto createIncomeDto) throws Exception {
+    /**
+     * Create Income File Condition
+     *
+     * @param createIncomeDto createIncomeDto
+     * @return incomeFileCondition
+     * @throws Exception All Exception
+     */
+    private BusinessStatusCondition createIncomeFileCondition(CreateIncomeDto createIncomeDto) throws Exception {
 
-        Pair<Timestamp, Timestamp> targetDateRange = createIncomeDto.getKindsIncomeInformation() == KINDS_INCOME_INFORMATION.FOR_DAY ?
+        final Pair<Timestamp, Timestamp> targetDateRange = createIncomeDto.getKindsIncomeInformation() == KINDS_INCOME_INFORMATION.FOR_DAY ?
                 dateComponent.getDateTermADay() : dateComponent.getDateTermADay(createIncomeDto.getPairDateRangeString());
 
-        return IncomeFileCondition.builder()
+        return BusinessStatusCondition.builder()
                 .lotNumber(createIncomeDto.getLotInformation().getLotNumber())
                 .pairTermADay(targetDateRange)
+                .endBusinessFlgList(Lists.newArrayList(END_BUSINESS_FLG.BUSINESS_NOT_ENDED))
                 .build();
     }
 }
