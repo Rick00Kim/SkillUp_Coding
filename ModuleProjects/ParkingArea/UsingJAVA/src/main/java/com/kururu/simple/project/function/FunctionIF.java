@@ -1,7 +1,5 @@
 package com.kururu.simple.project.function;
 
-import java.io.BufferedReader;
-
 /**
  * <h2>Parking Area [Function Interface]</h2>
  *
@@ -9,5 +7,5 @@ import java.io.BufferedReader;
  */
 public interface FunctionIF {
 
-    void execute(final BufferedReader bufferedReader);
+    void execute();
 }
