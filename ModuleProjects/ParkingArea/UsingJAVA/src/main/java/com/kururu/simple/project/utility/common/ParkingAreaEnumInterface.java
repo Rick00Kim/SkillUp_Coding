@@ -1,4 +1,4 @@
-package com.kururu.simple.project.constant;
+package com.kururu.simple.project.utility.common;
 
 /**
  * <h2>Parking Area [Enum Interface]</h2>

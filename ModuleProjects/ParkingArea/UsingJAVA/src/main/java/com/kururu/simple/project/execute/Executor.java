@@ -2,17 +2,17 @@ package com.kururu.simple.project.execute;
 
 import static com.kururu.simple.project.constant.ParkingAreaConstants.ALL_FUNCTION_MAP;
 
-import com.kururu.simple.project.controller.FrontController;
-import com.kururu.simple.project.function.*;
+import com.google.common.collect.Sets;
+import com.kururu.simple.project.constant.ParkingAreaEnums.MENU_SHOW_FLG;
+import com.kururu.simple.project.controller.FunctionController;
+import com.kururu.simple.project.utility.components.UserInputComponent;
+import com.kururu.simple.project.utility.factory.CurrentLotInformationFactory;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Map;
+import java.util.Set;
 
 /**
  * <h2>Parking Area [Module Starter]</h2>
@@ -26,7 +26,14 @@ import java.util.Map;
 @Slf4j
 public class Executor implements CommandLineRunner {
 
-    private final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    @Autowired
+    private FunctionController functionController;
+
+    @Autowired
+    private CurrentLotInformationFactory currentLotInformationFactory;
+
+    @Autowired
+    private UserInputComponent userInputComponent;
 
     /**
      * Implements Method
@@ -36,73 +43,33 @@ public class Executor implements CommandLineRunner {
      */
     @Override
     public void run(String... args) throws Exception {
-        log.info("MainExecutor is not support yet...");
 
-        boolean isStop = false;
-        final FrontController frontController = new FrontController();
-        showAllMenu();
+        boolean isStop;
         do {
-            log.info("\nINPUT -> ");
-            final String clientInput = selectFunction(bufferedReader.readLine());
-            FunctionIF functionIF = null;
-            switch (clientInput) {
-                case "1":
-                    functionIF = new ParkingCar();
-                    break;
-                case "2":
-                    functionIF = new ExitingCar();
-                    break;
-                case "3":
-                    functionIF = new ViewUsageState();
-                    break;
-                case "4":
-                    functionIF = new CreateIncomeInformation();
-                    break;
-                case "5":
-                    functionIF = new EndOfBusiness();
-                    break;
-                case "6":
-                    log.info("Exit Program....");
-                    isStop = true;
-                    break;
-                case "100":
-                    showAllMenu();
-                    break;
-                default:
-                    log.info("Incorrect input...");
-                    break;
-            }
-
-            frontController.processRequest(functionIF, bufferedReader);
-
+            showAllMenu();
+            isStop = functionController.forwardFunction(
+                    userInputComponent.getUserInput("INPUT -> "));
         } while (!isStop);
 
     }
 
+    /**
+     * Output usable Function
+     */
     private void showAllMenu() {
+
+        final Set<MENU_SHOW_FLG> setShowMenuTarget = Sets.newHashSet(MENU_SHOW_FLG.BASICALLY_SHOW);
+        if (currentLotInformationFactory.isExistCurrentLotInformation()) {
+            setShowMenuTarget.add(MENU_SHOW_FLG.NECESSARY_CURRENT_LOT);
+        }
+
         final StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("\n=======================");
-        ALL_FUNCTION_MAP.forEach((k, v) -> stringBuffer.append(String.format("\n %s : %s", k, v)));
+        ALL_FUNCTION_MAP.values().stream()
+                .filter(v -> setShowMenuTarget.contains(v.getRight()))
+                .forEach(v -> stringBuffer.append(String.format("\n %s : %s", v.getLeft(), v.getMiddle())));
         stringBuffer.append("\n=======================");
         log.info(stringBuffer.toString());
-
     }
 
-    private String selectFunction(
-            final String userInput
-    ) {
-        if (ObjectUtils.isEmpty(userInput)) {
-            return StringUtils.EMPTY;
-        }
-        for (Map.Entry<String, String> mapEntry : ALL_FUNCTION_MAP.entrySet()) {
-            if (mapEntry.getKey().equals(userInput)) {
-                return mapEntry.getKey();
-            } else {
-                if (mapEntry.getValue().toLowerCase().equals(userInput.toLowerCase())) {
-                    return mapEntry.getKey();
-                }
-            }
-        }
-        return userInput;
-    }
 }

@@ -1,0 +1,38 @@
+logging:
+  level:
+    com:
+      kururu:
+        simple:
+          project: DEBUG
+    org:
+      springframework: DEBUG
+      boot:
+        autoconfigure: INFO
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: parkingArea1!
+    url: jdbc:mysql://localhost:3306/parkingArea?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: parkingArea
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    database: MySQL
+    generate-ddl: false
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        check_nullability: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: false
+
+  main:
+    web-application-type: NONE
+kururu:
+  file:
+    base-dir: /kururuProjects/ParkingArea/file/output
+    daily-dir: ${kururu.file.base-dir}/daily
+    custom-dir: ${kururu.file.base-dir}/custom
