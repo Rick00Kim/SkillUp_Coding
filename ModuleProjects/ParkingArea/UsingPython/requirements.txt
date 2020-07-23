@@ -1,5 +1,0 @@
-tweepy
-selenium
-timy
-requests
-lxml

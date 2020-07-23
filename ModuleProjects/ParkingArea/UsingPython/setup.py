@@ -17,10 +17,15 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/Rick00Kim/SkillUp_Coding/tree/master/ModuleProjects/ParkingArea/UsingPython",
     packages=setuptools.find_packages(),
+    entry_points={
+        'console_scripts': ['UsingPython=parking_area.main:main']
+    },
     classifiers=[
-        "Programming Language :: Python :: 2.7.18",
+        "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: MIT License",
+
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.5',
+    zip_safe=False,
 )
