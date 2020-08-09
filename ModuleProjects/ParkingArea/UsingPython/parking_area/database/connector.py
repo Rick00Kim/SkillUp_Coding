@@ -1,22 +1,30 @@
 import mysql.connector
 from mysql.connector import errorcode
 
-config = {
+__config__ = {
+    'host': 'localhost',
+    'database': 'parkingArea',
     'user': 'parkingArea',
     'password': 'parkingArea1!',
-    'host': 'localhost',
-    'database': 'parkingArea'
+    'port': '3306'
 }
 
-try:
-    connection = mysql.connector.connect(**config)
-except mysql.connector.Error as err:
-    if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-        print("Something is wrong with your user name or password", err)
-    elif err.errno == errorcode.ER_BAD_DB_ERROR:
-        print("Database does not exist", err)
-    else:
-        print(err)
-else:
-    connection.close()
-    print("MySQL connection is closed")
+
+class MysqlConnector:
+    """Class for MySQL Connection
+
+    """
+
+    def __init__(self) -> None:
+        self._config = __config__
+
+    def get_mysql_connection(self):
+        try:
+            return mysql.connector.connect(**self._config)
+        except mysql.connector.Error as err:
+            if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+                print("Something is wrong with your user name or password", err)
+            elif err.errno == errorcode.ER_BAD_DB_ERROR:
+                print("Database does not exist", err)
+            else:
+                print(err)
