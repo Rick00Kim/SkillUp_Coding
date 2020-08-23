@@ -2,6 +2,9 @@ package com.kururu.skillup.algorithm.problems.sorting;
 
 /**
  * <h2>Bubble Sorting</h2>
+ * <ol>
+ *     <li>Sort image : <a href = "https://eleni.blog/2019/06/09/sorting-in-go-using-bubble-sort/">LINK</a></li>
+ * </ol>
  *
  * @author Rick00Kim dreamx119@gmail.com
  */

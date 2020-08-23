@@ -2,6 +2,9 @@ package com.kururu.skillup.algorithm.problems.sorting;
 
 /**
  * <h2>Insertion Sorting</h2>
+ * <ol>
+ *     <li>Sort image : <a href = "https://www.geeksforgeeks.org/insertion-sort/">LINK</a></li>
+ * </ol>
  *
  * @author Rick00Kim dreamx119@gmail.com
  */
