@@ -2,6 +2,9 @@ package com.kururu.skillup.algorithm.problems.sorting;
 
 /**
  * <h2>Selection Sorting</h2>
+ * <ol>
+ *     <li>Sort image : <a href = "https://www.programmingsimplified.com/c/source-code/c-program-selection-sort">LINK</a></li>
+ * </ol>
  *
  * @author Rick00Kim dreamx119@gmail.com
  */

@@ -2,6 +2,9 @@ package com.kururu.skillup.algorithm.problems.sorting;
 
 /**
  * <h2>Quick Sorting</h2>
+ * <ol>
+ *     <li>Sort image : <a href = "https://medium.com/@ujjwalgupta_57939/quicksort-in-javascript-a7337a1a6e80">LINK</a></li>
+ * </ol>
  *
  * @author Rick00Kim dreamx119@gmail.com
  */
