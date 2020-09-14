@@ -2,8 +2,7 @@ from parking_area.database.connector import MysqlConnector
 
 
 class DatabaseUtility:
-    """
-    Database Utility
+    """Parking Area [Database Utility]
     The executor of SQL statement (CRUD)
     """
 

@@ -2,6 +2,9 @@ from parking_area.functions.base_function import BaseFunction
 
 
 class ViewUsageState(BaseFunction):
+    """Parking Area [View usage state]
+
+    """
 
     def input_func(self):
         pass

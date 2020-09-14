@@ -2,8 +2,8 @@ import enum
 
 
 class ParkingAreaEnums:
-    """
-    Enums for Parking Area
+    """Parking Area [Enums for Parking Area]
+
     """
 
     class ResultStatusEnums(enum.Enum):

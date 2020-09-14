@@ -1,4 +1,7 @@
 class EntryBook:
+    """Parking Area [Entity of ENTRY_BOOK]
+
+    """
 
     def __init__(self, vehicle_number, client_number, lot_number,
                  car_size, arrival_time, departure_time, hours_of_use,

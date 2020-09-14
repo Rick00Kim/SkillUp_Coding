@@ -1,5 +1,5 @@
 class ParkingAreaConstants:
-    """
-    Constants Parking Area
+    """Parking Area [Constants Parking Area]
+
     """
     CURRENT_LOT_INFORMATION = None

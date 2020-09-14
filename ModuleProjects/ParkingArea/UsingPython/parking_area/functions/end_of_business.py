@@ -2,6 +2,9 @@ from parking_area.functions.base_function import BaseFunction
 
 
 class EndOfBusiness(BaseFunction):
+    """Parking Area [End of Business]
+
+    """
 
     def input_func(self):
         pass

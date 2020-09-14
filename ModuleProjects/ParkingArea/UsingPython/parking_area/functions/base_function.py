@@ -5,8 +5,8 @@ from parking_area.constants.parking_area_enums import ParkingAreaEnums
 
 
 class BaseFunction(ABC):
-    """
-    Abstract Class for Parking Area Functions
+    """Parking Area [Abstract Class for Parking Area Functions]
+
     """
 
     function_map = {}

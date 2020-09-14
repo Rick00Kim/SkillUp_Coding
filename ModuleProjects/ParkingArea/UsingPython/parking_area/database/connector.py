@@ -11,8 +11,8 @@ __config__ = {
 
 
 class MysqlConnector:
-    """
-    Class for MySQL Connection
+    """Parking Area [Class for MySQL Connection]
+
     """
 
     def __init__(self) -> None:

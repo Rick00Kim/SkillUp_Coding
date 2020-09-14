@@ -3,7 +3,7 @@ from parking_area.constants.parking_area_constants import ParkingAreaConstants
 
 
 class ParkingCar(BaseFunction):
-    """
+    """Parking Area [Park new car to free area]
 
     """
 

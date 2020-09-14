@@ -1,4 +1,7 @@
 class LotInformation:
+    """Parking Area [Entity of LOT_INFORMATION]
+
+    """
 
     def __init__(self, lot_number, lot_name, acceptable_small,
                  acceptable_medium, acceptable_heavy, del_flg):
