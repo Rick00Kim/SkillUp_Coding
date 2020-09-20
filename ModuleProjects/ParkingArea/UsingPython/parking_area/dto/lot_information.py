@@ -1,24 +1,20 @@
-class LotInformation:
+from sqlalchemy import Column, Integer, String, Enum
+from parking_area.dto.abstract_database_dto import Base
+
+
+class LotInformation(Base):
     """Parking Area [Entity of LOT_INFORMATION]
 
     """
+    __tablename__ = 'LOT_INFORMATION'
+    lot_number = Column(Integer, primary_key=True)
+    lot_name = Column(String)
+    acceptable_small = Column(Integer)
+    acceptable_medium = Column(Integer)
+    acceptable_heavy = Column(Integer)
+    del_flg = Column(Enum)
 
-    def __init__(self, lot_number, lot_name, acceptable_small,
-                 acceptable_medium, acceptable_heavy, del_flg):
-        self._lot_number = lot_number
-        self._lot_name = lot_name
-        self._acceptable_small = acceptable_small
-        self._acceptable_medium = acceptable_medium
-        self._acceptable_heavy = acceptable_heavy
-        self._del_flg = del_flg
-
-    def get_key_tuple(self):
-        return self._lot_number
-
-    def get_record_tuple(self):
-        return (self._lot_number,
-                self._lot_name,
-                self._acceptable_small,
-                self._acceptable_medium,
-                self._acceptable_heavy,
-                self._del_flg)
+    def __repr__(self):
+        return "<LOT_INFORMATION(lot_number='%s', lot_name='%s', acceptable_small='%d', acceptable_medium='%d',acceptable_heavy='%d', del_flg='%s')>" % (
+            self.lot_number, self.lot_name, self.acceptable_small, self.acceptable_medium, self.acceptable_heavy,
+            self.del_flg)

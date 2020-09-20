@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 from parking_area.constants.parking_area_constants import ParkingAreaConstants
 from parking_area.constants.parking_area_enums import ParkingAreaEnums
+from parking_area.database.database_utility import DatabaseUtility
 
 
 class BaseFunction(ABC):
@@ -14,7 +15,9 @@ class BaseFunction(ABC):
     def execute(self):
         # Check Current Lot information
         if ParkingAreaConstants.CURRENT_LOT_INFORMATION is None:
-            print('')
+            DatabaseUtility().execute_select_statement("SELECT * FROM LOT_INFORMATION WHERE %s",
+                                                       (input("What is your Lot Name :"),))
+            print('Current Lot Information is None')
 
         # Call input method for Function
         if self.input_func() is not ParkingAreaEnums.ResultStatusEnums.SUCCESS:
