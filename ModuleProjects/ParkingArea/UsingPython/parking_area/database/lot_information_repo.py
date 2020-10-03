@@ -1,32 +1,12 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import sessionmaker
-
-engine = create_engine('mysql+pymysql://parkingArea:parkingArea1!@localhost:3306/parkingArea?charset=utf8', echo=True)
-
-Base = declarative_base()
+from parking_area.database.database_utility import DatabaseUtility
+from parking_area.dto.lot_information import LotInformation
 
 
-class UserInfo(Base):
-    __tablename__ = 'USER_INFO'
-    user_id = Column(Integer, primary_key=True)
-    user_name = Column(String)
-    user_age = Column(Integer)
-    del_flg = Column(String)
+class LotInformationRepository:
 
-    def __repr__(self):
-        return "<UserInfo id=%d, name=%s, age=%d, delFlg=%s>" % (
-            self.user_id, self.user_name, self.user_age, self.del_flg)
+    def __init__(self):
+        self.database_utility = DatabaseUtility()
 
-
-Session = sessionmaker(bind=engine)
-
-session = Session()
-
-user_info_1 = UserInfo(user_name='TEST_USER', user_age=15, del_flg='0')
-session.add(user_info_1)
-session.commit()
-
-user_info_selected = session.query(UserInfo).filter_by(user_id=1).first()
-print(user_info_selected)
+    def select_one_by_lot_name(self, input_lot_name):
+        return self.database_utility.session.query(LotInformation).filter_by(
+            lot_name=input_lot_name).first()

@@ -2,8 +2,7 @@ from abc import ABC, abstractmethod
 
 from parking_area.constants.parking_area_constants import ParkingAreaConstants
 from parking_area.constants.parking_area_enums import ParkingAreaEnums
-from parking_area.database.database_utility import DatabaseUtility
-from parking_area.dto.lot_information import LotInformation
+from parking_area.database.lot_information_repo import LotInformationRepository
 
 
 class BaseFunction(ABC):
@@ -16,8 +15,7 @@ class BaseFunction(ABC):
     def execute(self):
         # Check Current Lot information
         if ParkingAreaConstants.CURRENT_LOT_INFORMATION is None:
-            lot_information = DatabaseUtility().session.query(LotInformation).filter_by(
-                lot_name=input("What is your Lot Name : ")).first()
+            lot_information = LotInformationRepository().select_one_by_lot_name(input("What is your Lot Name : "))
             if lot_information is None:
                 return
             else:
