@@ -6,6 +6,8 @@ class ExitingCar(BaseFunction):
 
     """
 
+    function_name = "Exiting Car"
+
     def input_func(self):
         pass
 

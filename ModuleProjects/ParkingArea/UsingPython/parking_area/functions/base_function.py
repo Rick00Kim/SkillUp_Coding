@@ -11,6 +11,7 @@ class BaseFunction(ABC):
     """
 
     function_map = {}
+    function_name: str = "BaseFunction"
 
     def execute(self):
         # Check Current Lot information

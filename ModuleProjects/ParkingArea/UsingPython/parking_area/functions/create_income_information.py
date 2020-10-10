@@ -6,6 +6,8 @@ class CreateIncomeInformation(BaseFunction):
 
     """
 
+    function_name = "Create income information"
+
     def input_func(self):
         pass
 

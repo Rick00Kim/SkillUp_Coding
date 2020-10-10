@@ -6,6 +6,8 @@ class ViewUsageState(BaseFunction):
 
     """
 
+    function_name = "View usage state"
+
     def input_func(self):
         pass
 

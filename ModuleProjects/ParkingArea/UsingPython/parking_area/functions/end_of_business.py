@@ -6,6 +6,8 @@ class EndOfBusiness(BaseFunction):
 
     """
 
+    function_name = "End of Business"
+
     def input_func(self):
         pass
 
