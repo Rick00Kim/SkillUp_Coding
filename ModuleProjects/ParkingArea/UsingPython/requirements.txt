@@ -1,3 +1,4 @@
 # MySql Libraries
 SQLAlchemy
 PyMySQL
+cryptography

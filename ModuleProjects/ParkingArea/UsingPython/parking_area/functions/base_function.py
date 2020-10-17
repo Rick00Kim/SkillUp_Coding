@@ -18,6 +18,7 @@ class BaseFunction(ABC):
         if ParkingAreaConstants.CURRENT_LOT_INFORMATION is None:
             lot_information = LotInformationRepository().select_one_by_lot_name(input("What is your Lot Name : "))
             if lot_information is None:
+                print("Lot Information is not exist")
                 return
             else:
                 ParkingAreaConstants.CURRENT_LOT_INFORMATION = lot_information

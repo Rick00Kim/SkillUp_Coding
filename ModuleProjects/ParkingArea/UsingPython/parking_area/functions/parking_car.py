@@ -16,10 +16,15 @@ class ParkingCar(BaseFunction):
     def input_func(self):
         self.vehicle_number = input("Vehicle number : ")
         input_car_size = input("Car size : ")
+        if self.vehicle_number or not self.vehicle_number.strip():
+            print("INPUT Vehicle number is NULL")
+            return ParkingAreaEnums.ResultStatusEnums.FAILURE
+
         if not input_car_size or not input_car_size.strip():
             print("INPUT Car size is Null")
+            return ParkingAreaEnums.ResultStatusEnums.FAILURE
         else:
-            if self.car_size not in ParkingAreaConstants.car_size_dict:
+            if input_car_size not in ParkingAreaConstants.car_size_dict.keys():
                 print("Car Size is invalid")
                 return ParkingAreaEnums.ResultStatusEnums.FAILURE
             else:
@@ -28,6 +33,7 @@ class ParkingCar(BaseFunction):
         return ParkingAreaEnums.ResultStatusEnums.SUCCESS
 
     def validate_func(self):
+
         pass
 
     def process_func(self):
