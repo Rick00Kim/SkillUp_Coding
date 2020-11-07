@@ -1,4 +1,5 @@
 from parking_area.controller.function_controller import FunctionController
+from parking_area.utilities.log_utility import *
 
 
 def execute_parking_area():
@@ -8,7 +9,10 @@ def execute_parking_area():
 
     while True:
         function_controller.show_menu()
-        is_stop = function_controller.execute_function(int(input("Function Number : ")))
+        try:
+            is_stop = function_controller.execute_function(int(input("Function Number : ")))
+        except ValueError:
+            output_error_log('INPUT is not INTEGER')
         if is_stop is True:
             break
 

@@ -17,6 +17,26 @@ class EntryBook(DatabaseDto):
     cost_of_use = Column(Integer)
     end_business_flg = Column(Enum)
 
+    def __init__(self,
+                 vehicle_number,
+                 client_number,
+                 lot_number,
+                 car_size,
+                 arrival_time,
+                 departure_time,
+                 hours_of_use,
+                 cost_of_use,
+                 end_business_flg):
+        self.vehicle_number = vehicle_number
+        self.client_number = client_number
+        self.lot_number = lot_number
+        self.car_size = car_size
+        self.arrival_time = arrival_time
+        self.departure_time = departure_time
+        self.hours_of_use = hours_of_use
+        self.cost_of_use = cost_of_use
+        self.end_business_flg = end_business_flg
+
     def __repr__(self):
         return "<ENTRY_BOOK(vehicle_number='%s', client_number='%s', lot_number='%d', car_size='%d', " \
                "arrival_time='%s', departure_time='%s', hours_of_use='%s', cost_of_use='%s', end_business_flg='%s')>" % (
