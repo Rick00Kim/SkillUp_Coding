@@ -20,6 +20,7 @@ class EntryBookRepository:
             self.database_utility.session.add(target_entity)
             self.database_utility.session.commit()
         except IntegrityError as error:
+            print(error)
             self.database_utility.session.rollback()
 
     def count_exist_empty_area(self, condition_tuple: tuple) -> int:
@@ -38,20 +39,6 @@ class EntryBookRepository:
 
         return query_result[0]
 
-    def select_entry_book_for_business(self,
-                                       lot_number, time_from, time_to, end_business_flg) -> tuple:
-        return self.database_utility.session.query(EntryBook). \
-            from_statement(
-            sqlalchemy.text("SELECT * FROM ENTRY_BOOK "
-                            "WHERE LOT_NUMBER=:lot_number "
-                            "AND ARRIVAL_TIME BETWEEN :time_from AND :time_to "
-                            "AND BUSINESS_FLG=:end_business_flg")) \
-            .params(lot_number=lot_number,
-                    time_from=time_from,
-                    time_to=time_to,
-                    end_business_flg=end_business_flg) \
-            .all()
-
     def update_for_exit_car(self,
                             key_tuple: tuple,
                             set_value_tuple: tuple):
@@ -65,4 +52,19 @@ class EntryBookRepository:
                          EntryBook.cost_of_use: set_value_tuple[2]})
             self.database_utility.session.commit()
         except IntegrityError as error:
+            print(error)
             self.database_utility.session.rollback()
+
+    def select_for_income_file(self,
+                               condition_tuple: tuple):
+        return self.database_utility.session.query(EntryBook) \
+            .from_statement(
+            sqlalchemy.text("SELECT * FROM ENTRY_BOOK "
+                            "WHERE LOT_NUMBER=:lot_number "
+                            "AND ARRIVAL_TIME BETWEEN :time_from AND :time_to "
+                            "AND END_BUSINESS_FLG=:business_flg")) \
+            .params(lot_number=condition_tuple[0],
+                    time_from=condition_tuple[1],
+                    time_to=condition_tuple[2],
+                    business_flg=condition_tuple[3]) \
+            .all()
