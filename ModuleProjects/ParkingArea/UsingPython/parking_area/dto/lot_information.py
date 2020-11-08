@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Enum
+from sqlalchemy import Column, Integer, String
 from parking_area.dto.abstract_database_dto import DatabaseDto
 
 

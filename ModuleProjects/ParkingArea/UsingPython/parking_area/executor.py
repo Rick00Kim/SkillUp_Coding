@@ -11,8 +11,9 @@ def execute_parking_area():
         function_controller.show_menu()
         try:
             is_stop = function_controller.execute_function(int(input("Function Number : ")))
-        except ValueError:
+        except ValueError as e:
             output_error_log('INPUT is not INTEGER')
+            output_error_log(e)
         if is_stop is True:
             break
 

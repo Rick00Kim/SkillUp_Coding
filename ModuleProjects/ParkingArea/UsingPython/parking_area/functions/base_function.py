@@ -23,7 +23,7 @@ class BaseFunction(ABC):
             else:
                 ParkingAreaConstants.CURRENT_LOT_INFORMATION = lot_information
 
-            # Call input method for Function
+        # Call input method for Function
         if self.input_func() is not ParkingAreaEnums.ResultStatusEnums.SUCCESS:
             return
 

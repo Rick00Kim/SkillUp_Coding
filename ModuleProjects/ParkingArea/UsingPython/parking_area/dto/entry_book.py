@@ -10,12 +10,12 @@ class EntryBook(DatabaseDto):
     vehicle_number = Column(String, primary_key=True)
     client_number = Column(String, primary_key=True)
     lot_number = Column(Integer, primary_key=True)
-    car_size = Column(Enum)
+    car_size = Column(String)
     arrival_time = Column(DateTime)
     departure_time = Column(DateTime)
     hours_of_use = Column(Integer)
     cost_of_use = Column(Integer)
-    end_business_flg = Column(Enum)
+    end_business_flg = Column(String)
 
     def __init__(self,
                  vehicle_number,

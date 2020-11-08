@@ -24,6 +24,7 @@ class FunctionController:
             return True
         else:
             if input_func_number in self.all_function_dict.keys():
+                print(input_func_number)
                 self.all_function_dict[input_func_number].execute()
                 return False
             else:
