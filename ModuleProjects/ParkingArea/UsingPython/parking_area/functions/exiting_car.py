@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from parking_area.functions.base_function import BaseFunction
 from parking_area.constants.parking_area_enums import ParkingAreaEnums
 from parking_area.database.entry_book_repo import EntryBookRepository
@@ -42,7 +40,7 @@ class ExitingCar(BaseFunction):
         exist_entry_book = EntryBookRepository().select_by_primary_key(
             (self.vehicle_number,
              'Non-Member',
-             ParkingAreaConstants.CURRENT_LOT_INFORMATION.lot_number,)
+             ParkingAreaConstants.CURRENT_LOT_INFORMATION.lot_number)
         )
         if not exist_entry_book:
             return ParkingAreaEnums.ResultStatusEnums.FAILURE
@@ -60,8 +58,8 @@ class ExitingCar(BaseFunction):
         EntryBookRepository().update_for_exit_car(
             (self.vehicle_number,
              'Non-Member',
-             ParkingAreaConstants.CURRENT_LOT_INFORMATION.lot_number,),
+             ParkingAreaConstants.CURRENT_LOT_INFORMATION.lot_number),
             (get_now_datetime(),
              hour_of_use,
-             calculate_cost_of_use(hour_of_use),)
+             calculate_cost_of_use(hour_of_use))
         )

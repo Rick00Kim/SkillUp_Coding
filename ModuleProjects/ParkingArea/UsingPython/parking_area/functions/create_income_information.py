@@ -1,4 +1,3 @@
-from datetime import datetime
 from parking_area.utilities.time_utility import parse_to_datetime, get_start_on_today, get_end_on_today
 from parking_area.functions.base_function import BaseFunction
 from parking_area.database.entry_book_repo import EntryBookRepository
@@ -47,6 +46,6 @@ class CreateIncomeInformation(BaseFunction):
             (ParkingAreaConstants.CURRENT_LOT_INFORMATION.lot_number,
              self.from_date,
              self.to_date,
-             '0',)
+             '0')
         )
         return ParkingAreaEnums.ResultStatusEnums.SUCCESS
