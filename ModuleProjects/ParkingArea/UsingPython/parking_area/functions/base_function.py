@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-
 from parking_area.constants.parking_area_constants import ParkingAreaConstants
 from parking_area.constants.parking_area_enums import ParkingAreaEnums
 from parking_area.database.lot_information_repo import LotInformationRepository

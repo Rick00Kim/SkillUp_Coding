@@ -2,7 +2,7 @@ from datetime import datetime
 
 
 def parse_to_datetime(date_str: str):
-    if date_str or not date_str.strip():
+    if not date_str or not date_str.strip():
         return None
     try:
         datetime.strptime(date_str, '%Y%m')

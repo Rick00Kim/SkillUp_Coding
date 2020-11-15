@@ -1,6 +1,7 @@
 import os
 import csv
 from pathlib import Path
+from parking_area.constants.parking_area_constants import ParkingAreaConstants
 
 
 def check_directory(target_path) -> bool:
@@ -16,12 +17,20 @@ def check_directory(target_path) -> bool:
 
 
 def create_csv_file(file_path: str, element_list: list):
-    target_path = Path(file_path + '/test.csv')
+    target_path = Path(file_path)
     if check_directory(target_path.parent):
         file = open(target_path, 'w')
+        wr = csv.writer(file)
         for element in element_list:
-            wr = csv.writer(file)
-            wr.writerow(element)
+            wr.writerow([ParkingAreaConstants.CURRENT_LOT_INFORMATION.lot_number,
+                         ParkingAreaConstants.CURRENT_LOT_INFORMATION.lot_name,
+                         element.vehicle_number,
+                         element.client_number,
+                         element.car_size,
+                         element.arrival_time,
+                         element.departure_time,
+                         element.hours_of_use,
+                         element.cost_of_use])
         file.close()
         return True
     else:

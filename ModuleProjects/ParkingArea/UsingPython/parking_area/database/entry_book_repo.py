@@ -68,3 +68,16 @@ class EntryBookRepository:
                     time_to=condition_tuple[2],
                     business_flg=condition_tuple[3]) \
             .all()
+
+    def update_for_end_business(self,
+                                key_tuple: tuple):
+        try:
+            self.database_utility.session.query(EntryBook) \
+                .filter_by(vehicle_number=key_tuple[0],
+                           client_number=key_tuple[1],
+                           lot_number=key_tuple[2]) \
+                .update({EntryBook.end_business_flg: '1'})
+            self.database_utility.session.commit()
+        except IntegrityError as error:
+            print(error)
+            self.database_utility.session.rollback()
