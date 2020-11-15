@@ -1,8 +1,10 @@
+from datetime import datetime
 from parking_area.utilities.time_utility import parse_to_datetime, get_start_on_today, get_end_on_today
 from parking_area.functions.base_function import BaseFunction
 from parking_area.database.entry_book_repo import EntryBookRepository
 from parking_area.constants.parking_area_enums import ParkingAreaEnums
 from parking_area.constants.parking_area_constants import ParkingAreaConstants
+from parking_area.utilities.file_utility import *
 
 
 def show_kinds_info_menu():
@@ -48,4 +50,7 @@ class CreateIncomeInformation(BaseFunction):
              self.to_date,
              '0')
         )
-        return ParkingAreaEnums.ResultStatusEnums.SUCCESS
+        if create_csv_file(ParkingAreaConstants.directory_dict['daily_folder'], result):
+            return ParkingAreaEnums.ResultStatusEnums.SUCCESS
+
+        return ParkingAreaEnums.ResultStatusEnums.FAILURE

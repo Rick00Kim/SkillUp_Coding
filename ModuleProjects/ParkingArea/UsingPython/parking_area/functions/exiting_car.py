@@ -1,3 +1,4 @@
+from datetime import datetime
 from parking_area.functions.base_function import BaseFunction
 from parking_area.constants.parking_area_enums import ParkingAreaEnums
 from parking_area.database.entry_book_repo import EntryBookRepository

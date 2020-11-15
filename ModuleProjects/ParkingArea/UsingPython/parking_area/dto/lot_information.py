@@ -7,12 +7,12 @@ class LotInformation(DatabaseDto):
 
     """
     __tablename__ = 'LOT_INFORMATION'
-    lot_number = Column(Integer, primary_key=True)
-    lot_name = Column(String, unique=True)
-    acceptable_small = Column(Integer)
-    acceptable_medium = Column(Integer)
-    acceptable_heavy = Column(Integer)
-    del_flg = Column(String)
+    lot_number = Column('LOT_NUMBER', Integer, primary_key=True)
+    lot_name = Column('LOT_NAME', String, unique=True)
+    acceptable_small = Column('ACCEPTABLE_SMALL', Integer)
+    acceptable_medium = Column('ACCEPTABLE_MEDIUM', Integer)
+    acceptable_heavy = Column('ACCEPTABLE_HEAVY', Integer)
+    del_flg = Column('DEL_FLG', String)
 
     def __repr__(self):
         return "<LOT_INFORMATION(lot_number='%s', lot_name='%s', acceptable_small='%d', acceptable_medium='%d',acceptable_heavy='%d', del_flg='%s')>" % (
