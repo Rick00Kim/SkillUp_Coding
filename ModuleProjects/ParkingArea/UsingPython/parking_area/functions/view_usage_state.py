@@ -14,12 +14,13 @@ class ViewUsageState(BaseFunction):
     target_view_dict = {}
 
     def input_func(self):
+        # Set dictionary of view usage
         self.target_view_dict = {
             '0': (ParkingAreaConstants.CURRENT_LOT_INFORMATION.acceptable_small, 0),
             '1': (ParkingAreaConstants.CURRENT_LOT_INFORMATION.acceptable_medium, 0),
             '2': (ParkingAreaConstants.CURRENT_LOT_INFORMATION.acceptable_heavy, 0)
         }
-
+        # Set count on dictionary
         for key, value in self.target_view_dict.items():
             print(key)
             temp = list(value)
@@ -36,6 +37,7 @@ class ViewUsageState(BaseFunction):
         return ParkingAreaEnums.ResultStatusEnums.SUCCESS
 
     def process_func(self):
+        # Output view usage
         print("LOT Name : {0}".format(ParkingAreaConstants.CURRENT_LOT_INFORMATION.lot_name))
         for key, value in self.target_view_dict.items():
             print("%8s\t -> Max: %2d, Current: %2d" % (

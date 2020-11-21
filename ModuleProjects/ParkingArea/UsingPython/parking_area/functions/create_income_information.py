@@ -7,7 +7,11 @@ from parking_area.constants.parking_area_enums import ParkingAreaEnums
 from parking_area.constants.parking_area_constants import ParkingAreaConstants
 
 
-def show_kinds_info_menu():
+def show_kinds_income_menu():
+    """Show all kinds of income
+
+    :return:
+    """
     print("================================")
     for key, value in ParkingAreaConstants.kinds_income_info_dict.items():
         print("{0} : {1}".format(key, value))
@@ -15,13 +19,17 @@ def show_kinds_info_menu():
 
 
 def get_file_path(prefix: str, date_format: str) -> str:
+    """Get file path
+
+    :param prefix:
+    :param date_format:
+    :return:
+    """
     return prefix + '_' + datetime.strftime(datetime.now(), date_format)
 
 
 class CreateIncomeInformation(BaseFunction):
-    """Parking Area [Create income information]
-
-    """
+    """Parking Area [Create income information]"""
 
     # Input field
     income_kinds: str
@@ -30,7 +38,8 @@ class CreateIncomeInformation(BaseFunction):
     function_name = "Create income information"
 
     def input_func(self):
-        show_kinds_info_menu()
+        # Show income menu
+        show_kinds_income_menu()
         self.income_kinds = input('INCOME KINDS : ')
         if self.income_kinds not in ParkingAreaConstants.kinds_income_info_dict.keys():
             print("INCOME KINDS is invalid")
@@ -48,6 +57,7 @@ class CreateIncomeInformation(BaseFunction):
         return ParkingAreaEnums.ResultStatusEnums.SUCCESS
 
     def process_func(self):
+        # Get list Entry book for income file
         output_list = EntryBookRepository().select_for_income_file(
             (ParkingAreaConstants.CURRENT_LOT_INFORMATION.lot_number,
              self.from_date,

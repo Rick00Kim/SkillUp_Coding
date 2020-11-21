@@ -50,29 +50,4 @@ public class Codility9 extends AbstractCodility {
         return "5";
     }
 
-    /*@Override
-    public void process() {
-
-        if (inputArray == null) {
-            result = 0;
-            return;
-        } else if (inputArray.length == 1) {
-            result = inputArray[0];
-            return;
-        } else {
-            for (int i = 0; i < inputArray.length - 1; i++) {
-                int maxByCycle = inputArray[i];
-                int tempSum = inputArray[i];
-                for (int j = i + 1; j < inputArray.length; j++) {
-                    tempSum += inputArray[j];
-                    if (tempSum > maxByCycle) {
-                        maxByCycle = tempSum;
-                    }
-                }
-                if (maxByCycle > result) {
-                    result = maxByCycle;
-                }
-            }
-        }
-    }*/
 }

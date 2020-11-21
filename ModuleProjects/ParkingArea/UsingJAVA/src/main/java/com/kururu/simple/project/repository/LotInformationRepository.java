@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
  */
 public interface LotInformationRepository extends JpaRepository<LotInformation, Long> {
 
+    /* Select by Lot name */
     LotInformation findByLotName(@Param("LOT_NAME") final String lotName);
 
 }

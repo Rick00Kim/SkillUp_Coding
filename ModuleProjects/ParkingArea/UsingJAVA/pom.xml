@@ -6,7 +6,7 @@
 
     <groupId>com.kururu.simple.project</groupId>
     <artifactId>ParkingArea_JAVA</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

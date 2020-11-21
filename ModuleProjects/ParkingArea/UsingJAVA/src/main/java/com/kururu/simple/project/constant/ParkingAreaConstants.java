@@ -33,7 +33,9 @@ public class ParkingAreaConstants {
         }
     });
 
+    /* Format of warn message(NOT NULL) */
     public static final String WARN_MESSAGE_NOT_NULL = "%s should not be null";
 
+    /* Format of warn message(INPUT ERROR) */
     public static final String WARN_MESSAGE_INPUT_ERROR = "Not correct input -> %s";
 }

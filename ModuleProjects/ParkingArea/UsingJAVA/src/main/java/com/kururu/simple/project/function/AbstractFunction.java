@@ -27,6 +27,7 @@ public abstract class AbstractFunction implements FunctionIF {
 
     protected LotInformation currentLotInformation;
 
+    /* RESULT_STATUS */
     protected enum RESULT_STATUS {
         SUCCESS, FAILURE
     }

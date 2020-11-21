@@ -50,7 +50,6 @@ public class Executor implements CommandLineRunner {
             isStop = functionController.forwardFunction(
                     userInputComponent.getUserInput("INPUT -> "));
         } while (!isStop);
-
     }
 
     /**
@@ -58,11 +57,13 @@ public class Executor implements CommandLineRunner {
      */
     private void showAllMenu() {
 
+        /* Set menu for showing. but setting current lot information, modify menu. */
         final Set<MENU_SHOW_FLG> setShowMenuTarget = Sets.newHashSet(MENU_SHOW_FLG.BASICALLY_SHOW);
         if (currentLotInformationFactory.isExistCurrentLotInformation()) {
             setShowMenuTarget.add(MENU_SHOW_FLG.NECESSARY_CURRENT_LOT);
         }
 
+        /* Show menus */
         final StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("\n=======================");
         ALL_FUNCTION_MAP.values().stream()
