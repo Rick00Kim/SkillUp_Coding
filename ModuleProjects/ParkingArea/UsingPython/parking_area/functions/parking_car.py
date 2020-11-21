@@ -36,7 +36,7 @@ class ParkingCar(BaseFunction):
                 return ParkingAreaEnums.ResultStatusEnums.FAILURE
             else:
                 self.car_size = input_car_size
-        # When all pass checking input variables, Return Success
+        # Return Success, when all pass checking input variables
         return ParkingAreaEnums.ResultStatusEnums.SUCCESS
 
     def validate_func(self):
@@ -57,7 +57,7 @@ class ParkingCar(BaseFunction):
         elif self.car_size == '2':
             if using_count >= ParkingAreaConstants.CURRENT_LOT_INFORMATION.acceptable_heavy:
                 return ParkingAreaEnums.ResultStatusEnums.FAILURE
-        # When all pass validate, Return Success
+        # Return Success, when all pass validate
         return ParkingAreaEnums.ResultStatusEnums.SUCCESS
 
     def process_func(self):

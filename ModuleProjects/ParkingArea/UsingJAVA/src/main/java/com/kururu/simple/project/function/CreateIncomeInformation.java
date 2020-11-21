@@ -28,6 +28,7 @@ public class CreateIncomeInformation extends AbstractFunction {
     @Override
     protected RESULT_STATUS input() {
 
+        /* INPUT */
         try {
             final CreateIncomeDto createIncomeDto = CreateIncomeDto.builder()
                     .kindsIncomeInformation(
@@ -56,23 +57,24 @@ public class CreateIncomeInformation extends AbstractFunction {
     @Override
     protected RESULT_STATUS validate() {
 
+        /* Validate */
         final CreateIncomeDto targetCreateIncomeDto = (CreateIncomeDto) functionMap.get(TARGET_INCOME_DTO);
         if (incomeService.validateDto(targetCreateIncomeDto)) {
             return RESULT_STATUS.FAILURE;
         }
-
         return RESULT_STATUS.SUCCESS;
     }
 
     @Override
     public RESULT_STATUS process() {
+
+        /* Process */
         try {
             incomeService.createIncomeInformation((CreateIncomeDto) functionMap.get(TARGET_INCOME_DTO));
         } catch (Exception e) {
             log.error("It has problem when Create Income Information", e);
             return RESULT_STATUS.FAILURE;
         }
-
         return RESULT_STATUS.SUCCESS;
     }
 

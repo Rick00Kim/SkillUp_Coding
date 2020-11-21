@@ -17,18 +17,19 @@ class EndOfBusiness(BaseFunction):
         return ParkingAreaEnums.ResultStatusEnums.SUCCESS
 
     def validate_func(self):
+        # Get list of not ended business entry book
         output_list = EntryBookRepository().select_for_income_file(
             (ParkingAreaConstants.CURRENT_LOT_INFORMATION.lot_number,
              get_start_on_today(),
              get_end_on_today(),
              '0')
         )
-
+        # Return failure when it exists
         if output_list:
             for warn_target in output_list:
                 output_warn_log("Vehicle Number[%s] is not ended. please check" % warn_target.vehicle_number)
             return ParkingAreaEnums.ResultStatusEnums.FAILURE
-
+        # Return Success through all process
         return ParkingAreaEnums.ResultStatusEnums.SUCCESS
 
     def process_func(self):

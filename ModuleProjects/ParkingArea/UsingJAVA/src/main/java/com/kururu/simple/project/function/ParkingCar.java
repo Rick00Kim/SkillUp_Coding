@@ -35,7 +35,7 @@ public class ParkingCar extends AbstractFunction {
 
     @Override
     protected RESULT_STATUS input() {
-
+        /* INPUT */
         final ParkingCarDto parkingCarDto = ParkingCarDto.builder().build();
         try {
             parkingCarDto.setVehicleNumber(
@@ -49,22 +49,20 @@ public class ParkingCar extends AbstractFunction {
             log.warn(String.format(WARN_MESSAGE_INPUT_ERROR, "INPUT"), e);
             return RESULT_STATUS.FAILURE;
         }
-
         functionMap.put(PARKING_CAR_DTO, parkingCarDto);
-
         return RESULT_STATUS.SUCCESS;
     }
 
     @Override
     protected RESULT_STATUS validate() {
-
+        /* VALIDATE */
         final ParkingCarDto parkingCarDto = (ParkingCarDto) functionMap.get(PARKING_CAR_DTO);
         final CountExistAreaCondition countExistAreaCondition = CountExistAreaCondition.builder()
                 .lotNumber(currentLotInformation.getLotNumber())
                 .carSize(parkingCarDto.getInputCarSize())
                 .pairTermADay(dateComponent.getDateTermADay())
                 .build();
-
+        /* Get count of using area */
         final int count = entryBookRepository.countExistEmptyArea(countExistAreaCondition);
         switch (parkingCarDto.getInputCarSize()) {
             case SMALL:
@@ -77,13 +75,12 @@ public class ParkingCar extends AbstractFunction {
                 if (count >= currentLotInformation.getAcceptableHeavy())
                     return RESULT_STATUS.FAILURE;
         }
-
         return RESULT_STATUS.SUCCESS;
     }
 
     @Override
     protected RESULT_STATUS process() {
-
+        /* PROCESS */
         final ParkingCarDto parkingCarDto = (ParkingCarDto) functionMap.get(PARKING_CAR_DTO);
         entryBookRepository.save(EntryBook.builder()
                 .key(EntryBookIdentity.builder()
@@ -95,7 +92,6 @@ public class ParkingCar extends AbstractFunction {
                 .arrivalTime(dateComponent.getCurrentTimestamp())
                 .endBusinessFlg(END_BUSINESS_FLG.BUSINESS_NOT_ENDED)
                 .build());
-
         return RESULT_STATUS.SUCCESS;
     }
 

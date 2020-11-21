@@ -7,12 +7,23 @@ from parking_area.utilities.time_utility import get_now_datetime
 
 
 def calculate_hours_of_use(from_time: datetime, to_time: datetime) -> int:
+    """Calculate used hours
+
+    :param from_time:
+    :param to_time:
+    :return: calculated hours
+    """
     diff = to_time - from_time
     hours = diff.total_seconds() / 3600
     return int(hours)
 
 
 def calculate_cost_of_use(target_hours: int) -> int:
+    """Calculate used cost
+
+    :param target_hours:
+    :return: calculated cost, default = 1000
+    """
     if target_hours != 0:
         return target_hours * 1000
     else:
@@ -34,18 +45,20 @@ class ExitingCar(BaseFunction):
         if not self.vehicle_number or not self.vehicle_number.strip():
             print("INPUT Vehicle number is NULL")
             return ParkingAreaEnums.ResultStatusEnums.FAILURE
-        # When pass checking input variables, Return Success
+        # Return Success, when pass checking input variables
         return ParkingAreaEnums.ResultStatusEnums.SUCCESS
 
     def validate_func(self):
+        # Get entry book by primary key
         exist_entry_book = EntryBookRepository().select_by_primary_key(
             (self.vehicle_number,
              'Non-Member',
              ParkingAreaConstants.CURRENT_LOT_INFORMATION.lot_number)
         )
+        # Return Failure when entry book not exists
         if not exist_entry_book:
             return ParkingAreaEnums.ResultStatusEnums.FAILURE
-        # When all pass validate, Set into map and Return Success
+        # Set into map and Return Success, when all pass validate
         self.function_map['target_entry_book'] = exist_entry_book
         return ParkingAreaEnums.ResultStatusEnums.SUCCESS
 

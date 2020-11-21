@@ -33,13 +33,12 @@ public class EndOfBusiness extends AbstractFunction {
 
     @Override
     protected RESULT_STATUS input() {
-
         return RESULT_STATUS.SUCCESS;
     }
 
     @Override
     protected RESULT_STATUS validate() {
-
+        /* Get target list of validate */
         final List<EntryBook> entryBookList
                 = entryBookRepository.selectEntryBookAboutBusiness(BusinessStatusCondition.builder()
                 .lotNumber(currentLotInformation.getLotNumber())
@@ -47,7 +46,7 @@ public class EndOfBusiness extends AbstractFunction {
                 .endBusinessFlgList(Lists.newArrayList(END_BUSINESS_FLG.values()))
                 .build()
         );
-
+        /* Validate */
         if (!CollectionUtils.isEmpty(entryBookList)) {
             entryBookList.forEach(e -> log.warn(String.format("Vehicle Number[%s] is not ended. please check", e.getKey().getVehicleNumber())));
             return RESULT_STATUS.FAILURE;
@@ -60,7 +59,6 @@ public class EndOfBusiness extends AbstractFunction {
 
     @Override
     public RESULT_STATUS process() {
-
         return RESULT_STATUS.SUCCESS;
     }
 

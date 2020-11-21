@@ -20,10 +20,20 @@ public class DateComponent {
 
     private static final String DATE_FINAL = "99991231";
 
+    /**
+     * Get current date for timestamp
+     *
+     * @return Current date Timestamp
+     */
     public Timestamp getCurrentTimestamp() {
         return new Timestamp(System.currentTimeMillis());
     }
 
+    /**
+     * Get Current date for Date
+     *
+     * @return Current date Date
+     */
     public Date getCurrentDate() {
         return new Date();
     }

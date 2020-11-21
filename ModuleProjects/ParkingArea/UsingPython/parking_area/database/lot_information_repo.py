@@ -8,5 +8,10 @@ class LotInformationRepository:
         self.database_utility = DatabaseUtility()
 
     def select_one_by_lot_name(self, input_lot_name):
+        """Select lot information by lot name
+
+        :param input_lot_name:
+        :return: Lot information
+        """
         return self.database_utility.session.query(LotInformation).filter_by(
             lot_name=input_lot_name).first()

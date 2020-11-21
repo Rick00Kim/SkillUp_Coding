@@ -8,11 +8,16 @@ class BaseFunction(ABC):
     """Parking Area [Abstract Class for Parking Area Functions]
 
     """
-
+    # Function map
     function_map = {}
+    # Function name
     function_name: str = "BaseFunction"
 
     def execute(self):
+        """Execute
+
+        :return: None
+        """
         # Check Current Lot information
         if ParkingAreaConstants.CURRENT_LOT_INFORMATION is None:
             lot_information = LotInformationRepository().select_one_by_lot_name(input("What is your Lot Name : "))

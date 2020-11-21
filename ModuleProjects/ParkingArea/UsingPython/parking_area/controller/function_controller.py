@@ -7,8 +7,10 @@ from parking_area.functions.exit_program import ExitProgram
 
 
 class FunctionController:
+    """Parking Area [FunctionController]"""
 
     def __init__(self):
+        # Initialize Dictionary of Function
         self.all_function_dict = {
             1: ParkingCar(),
             2: ExitingCar(),
@@ -19,9 +21,16 @@ class FunctionController:
         }
 
     def execute_function(self, input_func_number):
+        """Execute function
+
+        :param input_func_number:
+        :return: Exit program is True, another False
+        """
+        # Exit program
         if input_func_number == 6:
             print(self.all_function_dict[input_func_number].function_name)
             return True
+        # Execute function
         else:
             if input_func_number in self.all_function_dict.keys():
                 print(input_func_number)
@@ -32,6 +41,10 @@ class FunctionController:
                 return False
 
     def show_menu(self):
+        """Show menu
+
+        :return: None
+        """
         print("================================")
         for key, value in self.all_function_dict.items():
             print("{0} : {1}".format(key, value.function_name))
