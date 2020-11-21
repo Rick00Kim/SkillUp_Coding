@@ -35,11 +35,12 @@ public class ViewUsageState extends AbstractFunction {
 
     @Override
     protected RESULT_STATUS input() {
-
+        /* Set Result Map */
         COUNT_RESULT_MAP.put(CAR_SIZE.SMALL, Pair.of(currentLotInformation.getAcceptableSmall(), 0));
         COUNT_RESULT_MAP.put(CAR_SIZE.MEDIUM, Pair.of(currentLotInformation.getAcceptableMedium(), 0));
         COUNT_RESULT_MAP.put(CAR_SIZE.HEAVY, Pair.of(currentLotInformation.getAcceptableHeavy(), 0));
 
+        /* Set using area into Result Map by current lot information */
         Stream.of(CAR_SIZE.values()).forEach(e -> {
             final Pair<Integer, Integer> valueOfMap = COUNT_RESULT_MAP.get(e);
             final int currentCount = entryBookRepository.countExistEmptyArea(CountExistAreaCondition.builder()
@@ -54,6 +55,7 @@ public class ViewUsageState extends AbstractFunction {
 
     @Override
     protected RESULT_STATUS validate() {
+        /* Return Failure, when count of RESULT */
         if (COUNT_RESULT_MAP.size() != CAR_SIZE.values().length) {
             return RESULT_STATUS.FAILURE;
         }
@@ -62,6 +64,7 @@ public class ViewUsageState extends AbstractFunction {
 
     @Override
     public RESULT_STATUS process() {
+        /* Output usage state */
         log.info(String.format(PRINT_HEADER_FORMAT, currentLotInformation.getLotName()));
         COUNT_RESULT_MAP.forEach((k, v) -> log.info(String.format(PRINT_CONTENT_FORMAT, k.getDescription(), v.getLeft(), v.getRight())));
         return RESULT_STATUS.SUCCESS;

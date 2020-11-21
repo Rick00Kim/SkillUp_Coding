@@ -5,6 +5,11 @@ from parking_area.constants.parking_area_constants import ParkingAreaConstants
 
 
 def check_directory(target_path) -> bool:
+    """Check directory
+
+    :param target_path:
+    :return: Check result
+    """
     if os.path.isfile(target_path):
         return False
     else:
@@ -17,6 +22,12 @@ def check_directory(target_path) -> bool:
 
 
 def create_csv_file(file_path: str, element_list: list):
+    """Create csv file
+
+    :param file_path:
+    :param element_list:
+    :return: Result creating csv file
+    """
     target_path = Path(file_path)
     if check_directory(target_path.parent):
         file = open(target_path, 'w')

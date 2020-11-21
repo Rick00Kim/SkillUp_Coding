@@ -7,5 +7,6 @@ package com.kururu.simple.project.function;
  */
 public interface FunctionIF {
 
+    /* Execute Function */
     void execute();
 }

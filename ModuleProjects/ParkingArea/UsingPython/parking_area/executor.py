@@ -7,6 +7,7 @@ def execute_parking_area():
     is_stop = False
     function_controller = FunctionController()
 
+    # Execute main logic until exit program
     while True:
         function_controller.show_menu()
         try:

@@ -35,7 +35,7 @@ public class ExitingCar extends AbstractFunction {
 
     @Override
     protected RESULT_STATUS input() {
-
+        /* INPUT */
         final ExitingCarDto exitingCarDto = ExitingCarDto.builder().build();
         try {
             exitingCarDto.setVehicleNumber(userInputComponent.getUserInput("Vehicle number : "));
@@ -50,6 +50,7 @@ public class ExitingCar extends AbstractFunction {
 
     @Override
     protected RESULT_STATUS validate() {
+        /* VALIDATE */
         final ExitingCarDto targetExitingCarDto = (ExitingCarDto) functionMap.get(TARGET_EXITING_CAR_DTO);
         final EntryBook targetEntryBook = entryBookRepository
                 .findById(EntryBookIdentity.builder().vehicleNumber(targetExitingCarDto.getVehicleNumber())
@@ -67,16 +68,24 @@ public class ExitingCar extends AbstractFunction {
 
     @Override
     public RESULT_STATUS process() {
+        /* PROCESS */
         final EntryBook targetEntryBook = (EntryBook) functionMap.get(TARGET_ENTRY_BOOK);
         modifyEntryBook(targetEntryBook);
         entryBookRepository.save(targetEntryBook);
         return RESULT_STATUS.SUCCESS;
     }
 
+    /**
+     * Modify EntryBook for updating
+     *
+     * @param entryBook Entry Book
+     */
     private void modifyEntryBook(EntryBook entryBook) {
         entryBook.setDepartureTime(dateComponent.getCurrentTimestamp());
+        /* Calculate parked hours */
         long hours = (entryBook.getDepartureTime().getTime() - entryBook.getArrivalTime().getTime()) / 3600000;
         entryBook.setHoursOfUse((int) hours);
+        /* Set costs(default : 1000) */
         entryBook.setCostOfUse((entryBook.getHoursOfUse() * 1000) == 0 ?
                 1000 : entryBook.getHoursOfUse() * 1000);
     }
