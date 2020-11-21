@@ -8,7 +8,7 @@ with open('LICENSE') as f:
 
 setuptools.setup(
     name="parking_area",
-    version="0.0.1",
+    version="1.0.0",
     author="Kim Kuhyun",
     author_email="dreamx119@gmail.com",
     description="Kururu module project using python",
