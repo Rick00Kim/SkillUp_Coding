@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CodilityExecutor {
     public static void main(String[] args) {
         // Polymorphism Definition
-        AbstractCodility codility = new CodilityTest();
+        AbstractCodility codility = new CodilityTestForLine();
         // Call Input
         codility.input();
         // Call Process

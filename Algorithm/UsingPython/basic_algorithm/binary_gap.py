@@ -1,18 +1,18 @@
 """
 LINK : https://app.codility.com/programmers/lessons/1-iterations/binary_gap/
 """
-from .abstract_codility import AbstractCodility
+from .abstract_algorithm import AbstractAlgorithm
 
 
-class BinaryGap(AbstractCodility):
+class BinaryGap(AbstractAlgorithm):
 
-    def solution(self, n, r):
+    def solution(self, A, debug):
         print('BinaryGap')
-        max_gap = len(max(bin(n)[2:].strip('0').strip('1').split('1')))
+        max_gap = len(max(bin(A)[2:].strip('0').strip('1').split('1')))
 
         print(max_gap)
 
-        str_binary = '{0:b}'.format(n)
+        str_binary = '{0:b}'.format(A)
         print(str_binary)
 
         str_binary = str_binary.strip('0')
@@ -25,7 +25,7 @@ class BinaryGap(AbstractCodility):
         result = len(max(str_binary))
         print(result)
 
-        print("Test Result : {0}".format(result == r))
+        return result
 
     def execute(self):
-        self.solution(1041, 5)
+        self.process(1041, 5)
