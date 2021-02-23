@@ -7,7 +7,7 @@ with open('LICENSE') as f:
     project_license = f.read()
 
 setuptools.setup(
-    name="algorithm_using_python",
+    name="basic_algorithm",
     version="1.0.0",
     author="Kim Kuhyun",
     author_email="dreamx119@gmail.com",
@@ -18,7 +18,7 @@ setuptools.setup(
     url="https://github.com/Rick00Kim/SkillUp_Coding/tree/master/Algorithm/UsingPython",
     packages=setuptools.find_packages(),
     entry_points={
-        'console_scripts': ['UsingPython=using_python.main:main']
+        'console_scripts': ['UsingPython=basic_algorithm.main:main']
     },
     classifiers=[
         "Programming Language :: Python :: 3.8",

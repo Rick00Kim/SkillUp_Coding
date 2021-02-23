@@ -22,7 +22,7 @@ def execute_function():
     }
 
     for i, f in func_dict.items():
-        print('{0} -> {1}'.format(i, f.__module__))
+        print('{0} -> {1}'.format(i, f.__class__.__name__))
 
     user_in = str(input('Function -> '))
 
