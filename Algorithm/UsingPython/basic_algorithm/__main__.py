@@ -8,6 +8,10 @@ from .greedy import GreedyAlgorithm
 from .task import TaskAlgorithm
 from .programmers_test1 import ProgrammersTest1
 from .programmers_test2 import ProgrammersTest2
+from .task_1 import Task01
+from .task_2 import Task02
+from .task_3 import Task03
+from .task_4 import Task04
 
 
 def execute_function():
@@ -23,6 +27,10 @@ def execute_function():
         '8': TaskAlgorithm(),
         '9': ProgrammersTest1(),
         '10': ProgrammersTest2(),
+        '11': Task01(),
+        '12': Task02(),
+        '13': Task03(),
+        '14': Task04(),
     }
 
     for i, f in func_dict.items():
