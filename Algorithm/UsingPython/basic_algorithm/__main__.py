@@ -6,6 +6,8 @@ from .dijkstra import Dijkstra
 from .demo_task import DemoTask
 from .greedy import GreedyAlgorithm
 from .task import TaskAlgorithm
+from .programmers_test1 import ProgrammersTest1
+from .programmers_test2 import ProgrammersTest2
 
 
 def execute_function():
@@ -19,6 +21,8 @@ def execute_function():
         '6': DemoTask(),
         '7': GreedyAlgorithm(),
         '8': TaskAlgorithm(),
+        '9': ProgrammersTest1(),
+        '10': ProgrammersTest2(),
     }
 
     for i, f in func_dict.items():
