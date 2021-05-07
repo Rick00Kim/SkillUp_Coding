@@ -285,4 +285,9 @@ yarn-error.log*
 __pycache__
 db.sqlite3
 
+
+### vscode ###
+.vscode/
+*.code-workspace
+
 # End of https://www.gitignore.io/api/c++,java,python,intellij
