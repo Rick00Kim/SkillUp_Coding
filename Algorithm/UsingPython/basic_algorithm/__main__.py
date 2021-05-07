@@ -12,6 +12,7 @@ from .task_1 import Task01
 from .task_2 import Task02
 from .task_3 import Task03
 from .task_4 import Task04
+from .reverse_integer import ReverseInteger
 
 
 def execute_function():
@@ -31,6 +32,7 @@ def execute_function():
         '12': Task02(),
         '13': Task03(),
         '14': Task04(),
+        '15': ReverseInteger(),
     }
 
     for i, f in func_dict.items():
