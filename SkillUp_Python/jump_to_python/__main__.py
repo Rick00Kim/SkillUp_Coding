@@ -8,7 +8,7 @@
 # 3.
 
 # Import Modules
-from modules import *
+from .modules import *
 
 
 def main_execute():

@@ -4,7 +4,7 @@
 # 3. Print Result Arithmetic by x, y
 
 # Import Modules
-from modules import Calculator
+from .modules import Calculator
 
 
 def print_arithmetic():
