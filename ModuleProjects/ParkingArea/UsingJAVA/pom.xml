@@ -16,7 +16,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <org.hibernate.version>5.4.2.Final</org.hibernate.version>
+        <org.hibernate.version>5.4.24.Final</org.hibernate.version>
         <java.version>1.8</java.version>
         <org.slf4j-version>1.6.6</org.slf4j-version>
     </properties>
